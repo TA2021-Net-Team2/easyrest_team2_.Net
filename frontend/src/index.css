@@ -1,0 +1,16 @@
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.DraftEditor-root {
+  min-height: 100px;
+  margin-top: 16px;
+}
+
+.DraftEditor-editorContainer {
+  min-height: 100px;
+}
+
+.DraftEditor-editorContainer > div {
+  min-height: 100px;
+}

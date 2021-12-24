@@ -1,3 +1,4 @@
+#***** NODE.JS IGNORE *****
 # Logs
 logs
 *.log
@@ -74,3 +75,9 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+#***** pycache IGNORE *****
+#pycache
+*.pyc
+
+easyrest.egg-info

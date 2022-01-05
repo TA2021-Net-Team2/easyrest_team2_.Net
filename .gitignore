@@ -189,3 +189,4 @@ csx/
 # Visual Studio 6 workspace options file
 *.opt
 *.v2
+.vs/Team2.Net/v17/.suo

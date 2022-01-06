@@ -6,7 +6,7 @@ using Team2.Net.PageObjects;
 
 namespace Team2.Net
 {
-    public class AdminTest
+    public class AdminPageTests
     {
         private IWebDriver _webDriver;
 
@@ -22,12 +22,19 @@ namespace Team2.Net
         }
 
         [Test]
-        public void UserLockTest()
+        public void AuthorizationTestAdmin()
         {
             var mainMenu = new MainMenuPageObject(_webDriver);
             mainMenu
                 .SignIn()
                 .Login(StartLoginAdmin, PasswordAdmin);
+        }
+
+        [Test]
+        public void UserLockTest()
+        {
+            AuthorizationTestAdmin();
+
 
             var adminPanel = new AdminPanelPageObject(_webDriver);
             adminPanel
@@ -38,10 +45,7 @@ namespace Team2.Net
         [Test]
         public void UserUnlockTest()
         {
-            var mainMenu = new MainMenuPageObject(_webDriver);
-            mainMenu
-                .SignIn()
-                .Login(StartLoginAdmin, PasswordAdmin);
+            AuthorizationTestAdmin();
 
             var adminPanel = new AdminPanelPageObject(_webDriver);
             adminPanel
@@ -51,10 +55,7 @@ namespace Team2.Net
         [Test]
         public void OwnerLockTest()
         {
-            var mainMenu = new MainMenuPageObject(_webDriver);
-            mainMenu
-                .SignIn()
-                .Login(StartLoginAdmin, PasswordAdmin);
+            AuthorizationTestAdmin();
 
             var adminPanel = new AdminPanelPageObject(_webDriver);
             adminPanel
@@ -64,10 +65,7 @@ namespace Team2.Net
         [Test]
         public void OwnerUnlockTest()
         {
-            var mainMenu = new MainMenuPageObject(_webDriver);
-            mainMenu
-                .SignIn()
-                .Login(StartLoginAdmin, PasswordAdmin);
+            AuthorizationTestAdmin();
 
             var adminPanel = new AdminPanelPageObject(_webDriver);
             adminPanel
@@ -77,10 +75,7 @@ namespace Team2.Net
         [Test]
         public void ModeratorLockTest()
         {
-            var mainMenu = new MainMenuPageObject(_webDriver);
-            mainMenu
-                .SignIn()
-                .Login(StartLoginAdmin, PasswordAdmin);
+            AuthorizationTestAdmin();
 
             var adminPanel = new AdminPanelPageObject(_webDriver);
             adminPanel
@@ -90,10 +85,7 @@ namespace Team2.Net
         [Test]
         public void ModeratorUnlockTest()
         {
-            var mainMenu = new MainMenuPageObject(_webDriver);
-            mainMenu
-                .SignIn()
-                .Login(StartLoginAdmin, PasswordAdmin);
+            AuthorizationTestAdmin();
 
             var adminPanel = new AdminPanelPageObject(_webDriver);
             adminPanel

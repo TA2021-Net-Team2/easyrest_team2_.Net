@@ -1,35 +1,30 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
+using Team2.Net.Utilities;
 
 namespace Team2.Net.PageObjects
 {
-    class AuthorizationPageObject
+    public class AuthorizationPageObject : BasePage
     {
-        private IWebDriver _webDriver;
-
         private readonly By _emailInputButton = By.XPath("//input[@name='email']");
         private readonly By _passwordInputButton = By.XPath("//input[@name='password']");
-
         private readonly By _loginButton = By.XPath("//button[@type='submit']");
 
-        public AuthorizationPageObject(IWebDriver webDriver)
+        public AuthorizationPageObject(IWebDriver webDriver) : base(webDriver)
         {
-            _webDriver = webDriver;
         }
 
-        public MainMenuPageObject Login(string login, string password)
+        public BasePage Login(string login, string password)
         {
             _webDriver.FindElement(_emailInputButton).SendKeys(login);
-            _webDriver.FindElement(_passwordInputButton).SendKeys(password);
+            ExplicitWaiters.WaitForTextEntered(_webDriver, _emailInputButton, login);
 
-            Thread.Sleep(1000);
+            _webDriver.FindElement(_passwordInputButton).SendKeys(password);
+            ExplicitWaiters.WaitForCoveredTextEntered(_webDriver, _passwordInputButton, password);
 
             _webDriver.FindElement(_loginButton).Click();
 
-            return new MainMenuPageObject(_webDriver);
+            return new BasePage(_webDriver);
         }
     }
 }

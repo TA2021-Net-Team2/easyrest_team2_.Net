@@ -7,7 +7,7 @@ namespace Team2.Net.Utilities
 {
     public static class ExplicitWaiters
     {
-        private static int timeout = 6;
+        private static int timeout = 5;
 
         //Перевірка тексту
         public static void WaitForTextEntered(IWebDriver webDriver, By elementXPath, string expectedValue)
@@ -57,8 +57,7 @@ namespace Team2.Net.Utilities
                 {
                     throw new Exception(message: $"Element path { elementXPath } \n" +
                         $"not displayed! ");
-                }
-                
+                }  
             }
         }
 

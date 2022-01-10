@@ -12,6 +12,7 @@ namespace Team2.Net.PageObjects
         private readonly By _ownersListButton = By.CssSelector("a[href='/admin/owners']");
         private readonly By _moderatorsListButton = By.CssSelector("a[href='/admin/moderators']");
         private readonly By _restaurantsListButton = By.CssSelector("a[href='/admin/restaurants']");
+        
         private static string listUsersXPath = MainPanelXpath + "//table[contains(@class, 'Users-table')]";
         private readonly By listUsers = By.XPath(listUsersXPath);
         private readonly By FirstUserButtonLock = By.XPath(listUsersXPath + "//button[1]");

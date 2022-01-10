@@ -16,18 +16,20 @@ namespace Team2.Net.PageObjects
             _webDriver = webDriver;
         }
 
+        //Waiters на те чи Аватар видно в разі авторизації користувача
         public bool IsAvatarVisible()
         {
             return ExplicitWaiters.TryForElementDisplayed(_webDriver, UserMenuAvatar);
         }
 
-        public AuthorizationPageObject SignIn()
+        public Authorization SignIn()
         {
             _webDriver.FindElement(_signInButton).Click();
 
-            return new AuthorizationPageObject(_webDriver);
+            return new Authorization(_webDriver);
         }
 
+        //Waiters на те чи панель Header видно в разі авторизації користувача (можливо воно і не потрібно)
         public virtual void IsPageLoaded()
         {
             ExplicitWaiters.WaitElementsDisplayed(_webDriver, Header);

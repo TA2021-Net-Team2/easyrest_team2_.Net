@@ -19,7 +19,6 @@ namespace Team2.Net.PageObjects
             ExplicitWaiters.WaitForCoveredTextEntered(_webDriver, _passwordInputButton, password);
 
             _webDriver.FindElement(_loginButton).Click();
-            ExplicitWaiters.WaitElementsDisplayed(_webDriver, _loginButton);
 
             return new BasePage(_webDriver);
         }

@@ -42,30 +42,47 @@ namespace Team2.Net
         public void UserUnlockTest()
         {
             _adminPanel.UnlockFirstUser();
+
+            Assert.AreEqual("Active", _adminPanel.GetActivityStatusForFirstUser());
         }
 
         [Test]
         public void OwnerLockTest()
         {
             _adminPanel.LockOwner();
+
+            Assert.AreEqual("Banned", _adminPanel.GetActivityStatusForFirstUser());
         }
 
         [Test]
         public void OwnerUnlockTest()
         {
             _adminPanel.UnlockOwner();
+
+            Assert.AreEqual("Active", _adminPanel.GetActivityStatusForFirstUser());
         }
 
         [Test]
         public void ModeratorLockTest()
         {
             _adminPanel.LockModerator();
+
+            Assert.AreEqual("Banned", _adminPanel.GetActivityStatusForFirstUser());
         }
 
         [Test]
         public void ModeratorUnlockTest()
         {
             _adminPanel.UnlockModerator();
+
+            Assert.AreEqual("Active", _adminPanel.GetActivityStatusForFirstUser());
+        }
+
+        [Test]
+        public void AddModeratorTest()
+        {
+            _adminPanel.AddModerator();
+
         }
     }
 }

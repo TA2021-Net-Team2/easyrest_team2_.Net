@@ -6,26 +6,26 @@ using Team2.Net.PageObjects;
 
 namespace Team2.Net
 {
-    public class AdminPageTests
+    public class AdminPageTests : BaseTest
     {
-        private IWebDriver _webDriver;
+        private const string StartLoginAdmin = "steveadmin@test.com";
+        private const string PasswordAdmin = "1";
 
-        string StartLoginAdmin = "steveadmin@test.com";
-        string PasswordAdmin = "1";
+        private AdminPanel _adminPanel;
 
         [SetUp]
-        public void Setup()
+        public override void Setup()
         {
-            _webDriver = new OpenQA.Selenium.Chrome.ChromeDriver();
-            _webDriver.Navigate().GoToUrl("http://localhost:3000/");
-            _webDriver.Manage().Window.Maximize();
+            base.Setup();
+
+            AdminLogin();
+            _adminPanel = new AdminPanel(_webDriver);
         }
 
-        [Test]
-        public void AuthorizationTestAdmin()
+        private void AdminLogin()
         {
-            var mainMenu = new MainMenuPageObject(_webDriver);
-            mainMenu
+            var page = new BasePage(_webDriver);
+            page
                 .SignIn()
                 .Login(StartLoginAdmin, PasswordAdmin);
         }
@@ -33,70 +33,39 @@ namespace Team2.Net
         [Test]
         public void UserLockTest()
         {
-            AuthorizationTestAdmin();
+            _adminPanel.LockFirstUser();
 
-
-            var adminPanel = new AdminPanelPageObject(_webDriver);
-            adminPanel
-                .LockUser();
-
+            Assert.AreEqual("Banned", _adminPanel.GetActivityStatusForFirstUser());
         }
 
         [Test]
         public void UserUnlockTest()
         {
-            AuthorizationTestAdmin();
-
-            var adminPanel = new AdminPanelPageObject(_webDriver);
-            adminPanel
-                .UnlockUser();
+            _adminPanel.UnlockFirstUser();
         }
 
         [Test]
         public void OwnerLockTest()
         {
-            AuthorizationTestAdmin();
-
-            var adminPanel = new AdminPanelPageObject(_webDriver);
-            adminPanel
-                .LockOwner();
+            _adminPanel.LockOwner();
         }
 
         [Test]
         public void OwnerUnlockTest()
         {
-            AuthorizationTestAdmin();
-
-            var adminPanel = new AdminPanelPageObject(_webDriver);
-            adminPanel
-                .UnlockOwner();
+            _adminPanel.UnlockOwner();
         }
 
         [Test]
         public void ModeratorLockTest()
         {
-            AuthorizationTestAdmin();
-
-            var adminPanel = new AdminPanelPageObject(_webDriver);
-            adminPanel
-                .LockModerator();
+            _adminPanel.LockModerator();
         }
 
         [Test]
         public void ModeratorUnlockTest()
         {
-            AuthorizationTestAdmin();
-
-            var adminPanel = new AdminPanelPageObject(_webDriver);
-            adminPanel
-                .UnlockModerator();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            Thread.Sleep(1000);
-            _webDriver.Quit();
+            _adminPanel.UnlockModerator();
         }
     }
 }

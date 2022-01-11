@@ -9,6 +9,10 @@ namespace Team2.Net.PageObjects
         public Authorization(IWebDriver webDriver) : base(webDriver)
         {
         }
+        public string GetSignInPage()
+        {
+            return _webDriver.FindElement(signInText).Text;
+        }
 
         public BasePage Login(string login, string password)
         {
@@ -21,6 +25,21 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(_loginButton).Click();
 
             return new BasePage(_webDriver);
+        }
+        public string GetErrorAutorizationGoogle()
+        {
+            return _webDriver.FindElement(ErrorText).Text;
+        }
+        
+
+        public Authorization SignInFromGoogleAccount()
+        {
+            _webDriver.FindElement(GoogleButton).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new Authorization(_webDriver);
+
         }
     }
 }

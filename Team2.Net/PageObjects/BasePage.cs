@@ -34,5 +34,22 @@ namespace Team2.Net.PageObjects
         {
             ExplicitWaiters.WaitElementsDisplayed(_webDriver, Header);
         }
+
+        public Registration Registration()
+        {
+            SeleniumWaiters.WaitSomeInterval(1);
+            _webDriver.FindElement(_signUpButton).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+            
+            return new Registration(_webDriver);
+        }
+
+        public BasePage OpenRestaurantList()
+        {
+            _webDriver.FindElement(RestaurantListButton).Click();
+
+            return new BasePage(_webDriver);
+        }
     }
 }

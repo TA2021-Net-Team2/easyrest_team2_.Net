@@ -34,7 +34,7 @@ namespace Team2.Net.PageObjects
         // Moderator
         private readonly By AddModeratorButton = By.CssSelector("a[href='/admin/moderators/create']");
         private readonly By CreateModeratorAccountForm = By.XPath("//div[contains(@class, 'UserCreate')]");
-
+        
         // Create Moderator Account Form
         private readonly By NameInput = By.XPath("//input[@name='name']");
         private readonly By EmailInput = By.XPath("//input[@name='email']");

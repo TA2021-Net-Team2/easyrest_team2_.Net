@@ -9,5 +9,20 @@ namespace Team2.Net.PageObjects
 {
     public partial class RestaurantsList
     {
+        private IWebDriver _webDriver;
+
+        public RestaurantsList(IWebDriver webDriver)
+        {
+            _webDriver = webDriver;
+        }
+
+        public RestaurantsList CreateOrder()
+        {
+            SeleniumWaiters.WaitElement(_webDriver, WatchMenu);
+            SeleniumWaiters.WaitSomeInterval(2);
+            _webDriver.FindElement(WatchMenu).Click();
+            SeleniumWaiters.WaitSomeInterval(2);
+            return new RestaurantsList(_webDriver);
+        }  
     }
 }

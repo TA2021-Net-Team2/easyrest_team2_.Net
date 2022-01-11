@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,9 +23,12 @@ namespace Team2.Net.PageObjects
         private readonly By BannedStatusXPath = By.XPath("//p[contains(text(),'Banned')]");
 
         private readonly By listUsers = By.XPath(listUsersXPath);
+
+        // Row 
+        private readonly By FirstUserRowWithStatusActive = By.XPath("");
         private readonly By FirstUserButtonLockStatusActive = By.XPath(listUsersXPath + "//p[contains(text(),'Active')]//following::button[1]");
         private readonly By FirstUserButtonLockStatusBanned = By.XPath(listUsersXPath + "//p[contains(text(),'Banned')]//following::button[1]");
-        private readonly By FirstUserActivityStatus = By.XPath(listUsersXPath + "//p[1]");
+        private readonly By FirstUserActivityStatus = By.XPath(listUsersXPath + "//p[last()]");
 
         // Moderator
         private readonly By AddModeratorButton = By.CssSelector("a[href='/admin/moderators/create']");

@@ -23,57 +23,135 @@ namespace Team2.Net.PageObjects
 
         public AdminPanel LockFirstUser()
         {
-            ExplicitWaiters.WaitElementDisplayed(_webDriver, _usersListButton);
+            SeleniumWaiters.WaitElement(_webDriver, _usersListButton);
             _webDriver.FindElement(_usersListButton).Click();
 
-            ExplicitWaiters.WaitElementDisplayed(_webDriver, listUsers);
-            _webDriver.FindElement(FirstUserButtonLock).Click();
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
 
+            //check status Active
+            SeleniumWaiters.WaitElement(_webDriver, ActiveStatusXPath);
+
+            _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
         public AdminPanel UnlockFirstUser()
         {
-            Thread.Sleep(2000);
+            SeleniumWaiters.WaitElement(_webDriver, _usersListButton);
             _webDriver.FindElement(_usersListButton).Click();
-            Thread.Sleep(2000);
 
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
+            //check status Banned
+            SeleniumWaiters.WaitElement(_webDriver, BannedStatusXPath);
+
+            _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
         public AdminPanel LockOwner()
         {
-            Thread.Sleep(2000);
+            SeleniumWaiters.WaitElement(_webDriver, _ownersListButton);
             _webDriver.FindElement(_ownersListButton).Click();
-            Thread.Sleep(2000);
 
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
+            //check status Active
+            SeleniumWaiters.WaitElement(_webDriver, ActiveStatusXPath);
+
+            _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
         public AdminPanel UnlockOwner()
         {
-            Thread.Sleep(2000);
+            SeleniumWaiters.WaitElement(_webDriver, _ownersListButton);
             _webDriver.FindElement(_ownersListButton).Click();
-            Thread.Sleep(2000);
 
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
+            //check status Banned
+            SeleniumWaiters.WaitElement(_webDriver, BannedStatusXPath);
+
+            _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
         public AdminPanel LockModerator()
         {
-            Thread.Sleep(2000);
+            SeleniumWaiters.WaitElement(_webDriver, _moderatorsListButton);
             _webDriver.FindElement(_moderatorsListButton).Click();
-            Thread.Sleep(2000);
 
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
+            //check status Active
+            SeleniumWaiters.WaitElement(_webDriver, ActiveStatusXPath);
+
+            _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
         public AdminPanel UnlockModerator()
         {
-            Thread.Sleep(2000);
+            SeleniumWaiters.WaitElement(_webDriver, _moderatorsListButton);
             _webDriver.FindElement(_moderatorsListButton).Click();
-            Thread.Sleep(2000);
 
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
+            //check status Banned
+            SeleniumWaiters.WaitElement(_webDriver, BannedStatusXPath);
+
+            _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+            return new AdminPanel(_webDriver);
+        }
+
+        //in process...
+        public AdminPanel AddModerator()
+        {
+            string nameInput = "Bodya";
+            string emailInput = "bodya@mail.com";
+            string phoneNumberInput = "380999999999";
+            string passwordInput = "AceW12311";
+            string passwordConfirmInput = "AceW12311";
+
+            SeleniumWaiters.WaitElement(_webDriver, _moderatorsListButton);
+            _webDriver.FindElement(_moderatorsListButton).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, AddModeratorButton);
+            _webDriver.FindElement(AddModeratorButton).Click();
+
+            SeleniumWaiters.WaitSomeInterval(2);
+
+            SeleniumWaiters.WaitElement(_webDriver, CreateModeratorAccountForm);
+
+            _webDriver.FindElement(NameInput).SendKeys(nameInput);
+            ExplicitWaiters.WaitForTextEntered(_webDriver, NameInput, nameInput);
+
+            _webDriver.FindElement(EmailInput).SendKeys(emailInput);
+            ExplicitWaiters.WaitForTextEntered(_webDriver, EmailInput, emailInput);
+
+            _webDriver.FindElement(PhoneNumberInput).SendKeys(phoneNumberInput);
+            ExplicitWaiters.WaitForTextEntered(_webDriver, PhoneNumberInput, phoneNumberInput);
+
+            _webDriver.FindElement(PasswordInput).SendKeys(passwordInput);
+            ExplicitWaiters.WaitForTextEntered(_webDriver, PasswordInput, passwordInput);
+
+            _webDriver.FindElement(ConfirmPasswordInput).SendKeys(passwordConfirmInput);
+            ExplicitWaiters.WaitForTextEntered(_webDriver, ConfirmPasswordInput, passwordConfirmInput);
+
+            SeleniumWaiters.WaitSomeInterval(2);
             return new AdminPanel(_webDriver);
         }
     }

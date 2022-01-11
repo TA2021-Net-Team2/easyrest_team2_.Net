@@ -64,7 +64,7 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitSomeInterval(1);
             _webDriver.FindElement(ArchiveButton).Click();
-
+            //bla
             return new MyRestaraunts(_webDriver); 
         }
     }

@@ -33,6 +33,7 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
 
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
@@ -48,6 +49,7 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
 
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
@@ -63,6 +65,7 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
 
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
@@ -78,6 +81,7 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
 
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
@@ -93,6 +97,7 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
 
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 
@@ -108,6 +113,7 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
 
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
 

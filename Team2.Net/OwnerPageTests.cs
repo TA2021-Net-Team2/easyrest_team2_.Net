@@ -50,7 +50,7 @@ namespace Team2.Net
         {
             var pageMyRestaraunts = new MyRestaraunts(_webDriver);
             pageMyRestaraunts.ArchiveRestaraunt();
-
+                
             //Assert.AreEqual();
         }
         [Test]

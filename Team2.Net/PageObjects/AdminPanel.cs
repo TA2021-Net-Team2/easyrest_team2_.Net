@@ -16,6 +16,7 @@ namespace Team2.Net.PageObjects
             _webDriver = webDriver;
         }
 
+        //Status First User
         public string GetActivityStatusForFirstUser()
         {
             return _webDriver.FindElement(FirstUserActivityStatus).Text;

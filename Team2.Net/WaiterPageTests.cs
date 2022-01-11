@@ -32,9 +32,34 @@ namespace Team2.Net
         }
 
         [Test]
-        public void CloseOrderSecond()
+        public void CloseOrderInProgress()
+            //605
         {
             _waiterPanel.CloseOrder();
+            Assert.AreEqual("Success", _waiterPanel.FindSuccessButton());
+        }
+        [Test]
+        public void StartOrderInWaiterPanel()
+        //604
+        {
+            _waiterPanel.StartOrder();
+            Assert.AreEqual("Success", _waiterPanel.FindSuccessButton());
+        }
+
+        [Test]
+        public void CloseOrderInAllPannel()
+        //602
+        {
+            _waiterPanel.CloseOrderInAll();
+            Assert.AreEqual("Success", _waiterPanel.FindSuccessButton());
+        }
+
+        [Test]
+        public void StartOrderInAllPannel()
+        //603
+        {
+            _waiterPanel.StartOrderInAll();
+            Assert.AreEqual("Success", _waiterPanel.FindSuccessButton());
         }
     }
 }

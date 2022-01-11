@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -112,7 +112,7 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, BannedStatusXPath);
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
-
+          
             SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }

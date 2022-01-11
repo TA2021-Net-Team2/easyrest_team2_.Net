@@ -15,16 +15,13 @@ namespace Team2.Net.PageObjects
         {
             _webDriver = webDriver;
         }
-
         public string GetActivityStatusRestaraunt()
         {
             return _webDriver.FindElement(statusAdded).Text;
         }
-
-        public MyRestaraunts AddNewRestaraunt(string RestarauntName, string RestarauntAddress, string RestarauntPhone, string RestarauntText)
+        public MyRestaraunts AddNewRestaraunt(string RestarauntName, string RestarauntAddress, string RestarauntPhone, string RestarauntText, string SecondText)
         {
             SeleniumWaiters.WaitSomeInterval(1);
-            
             _webDriver.FindElement(AddRestarauntButton).Click();
             SeleniumWaiters.WaitSomeInterval(1);
 
@@ -52,13 +49,23 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(RestarauntEmptyPlace).Click();
             SeleniumWaiters.WaitSomeInterval(1);
 
-            _webDriver.FindElement(RestarauntTextDescriptionFormInput).SendKeys("Momomoahaha");
+            _webDriver.FindElement(RestarauntTextDescriptionFormInput).SendKeys(SecondText);
             SeleniumWaiters.WaitSomeInterval(1);
 
             _webDriver.FindElement(AddButton).Click();
             SeleniumWaiters.WaitSomeInterval(1);
 
             return new MyRestaraunts(_webDriver);
+        }
+        public MyRestaraunts ArchiveRestaraunt()
+        {
+            SeleniumWaiters.WaitSomeInterval(1);
+            _webDriver.FindElement(AdditionalButton).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+            _webDriver.FindElement(ArchiveButton).Click();
+
+            return new MyRestaraunts(_webDriver); 
         }
     }
 }

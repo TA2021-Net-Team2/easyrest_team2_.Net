@@ -10,10 +10,11 @@ namespace Team2.Net
     {
         private const string StartLoginOwner = "earlmorrison@test.com";
         private const string PasswordOwner = "1111";
-        private const string restarauntName = "MMMatsuri";
-        private const string restarauntAddress = "1Village 8 street 999";
-        private const string restarauntPhone = "389999999999";
-        private const string restarauntText = "Good1 place";
+        private const string restarauntName = "Matsuri";
+        private const string restarauntAddress = "Village 8 street 999";
+        private const string restarauntPhone = "380999999999";
+        private const string restarauntText = "Good place";
+        private const string secondText = "Good place";
 
 
         private MyRestaraunts _myRestaraunts;
@@ -39,7 +40,7 @@ namespace Team2.Net
         public void CreateOwnRestaraunt()
         {
             var pageMyRestaraunts = new MyRestaraunts(_webDriver);
-            pageMyRestaraunts.AddNewRestaraunt(restarauntName,restarauntAddress,restarauntPhone,restarauntText);
+            pageMyRestaraunts.AddNewRestaraunt(restarauntName,restarauntAddress,restarauntPhone,restarauntText,secondText);
 
             Assert.AreEqual("Restaurant was successfully created", _myRestaraunts.GetActivityStatusRestaraunt());
         }
@@ -47,7 +48,10 @@ namespace Team2.Net
         [Test]
         public void AddRestarauntToArchive()
         {
+            var pageMyRestaraunts = new MyRestaraunts(_webDriver);
+            pageMyRestaraunts.ArchiveRestaraunt();
 
+            //Assert.AreEqual();
         }
         [Test]
         public void UnarchiveRestaraunt()

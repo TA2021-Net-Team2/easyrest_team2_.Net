@@ -22,5 +22,8 @@ namespace Team2.Net.PageObjects
 
         private readonly By statusAdded = By.XPath("//p[contains(text(),'Restaurant was successfully created')]");
 
+        private readonly By AdditionalButton = By.XPath("//*/main/div/div/div/div[1]/div[1]/div[1]/div/div[2]/div/div[1]/button");
+        private readonly By ManageButton = By.XPath("a[href='/profile/restaurants/1/edit/info']");
+        private readonly By ArchiveButton = By.XPath("//*[span='Archive']");
     }
 }

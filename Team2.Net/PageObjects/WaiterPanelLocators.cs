@@ -15,7 +15,7 @@ namespace Team2.Net.PageObjects
         private readonly By _buttonOrder = By.XPath("//button[1]/span[contains(text(),'Start order')]");
         private readonly By _progressButton = By.XPath("//span[text()= 'In progress']//following::button[1]");
         private readonly By _waiterButton = By.XPath("//span[text()= 'Assigned waiter']//following::button[1]");
-        private readonly By _successButton = By.XPath("//div[text()= 'success']");
+        private readonly By successButton = By.XPath("//p[contains (text(), 'success')]");
 
     }
 }

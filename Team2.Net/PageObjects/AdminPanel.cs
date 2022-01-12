@@ -21,6 +21,11 @@ namespace Team2.Net.PageObjects
             return _webDriver.FindElement(FirstUserActivityStatus).Text;
         }
 
+        public string GetNameModerator()
+        {
+            return _webDriver.FindElement(NameModerator).Text;
+        }
+
         public AdminPanel LockFirstUser()
         {
             SeleniumWaiters.WaitElement(_webDriver, _usersListButton);
@@ -120,11 +125,11 @@ namespace Team2.Net.PageObjects
         //in process...
         public AdminPanel AddModerator()
         {
-            string nameInput = "Bodya";
-            string emailInput = "bodya@mail.com";
-            string phoneNumberInput = "380999999999";
-            string passwordInput = "AceW12311";
-            string passwordConfirmInput = "AceW12311";
+            string nameInput = "Austin Powers";
+            string emailInput = "austinmoderator@test.com";
+            string phoneNumberInput = "+380000000753";
+            string passwordInput = "12345678";
+            string passwordConfirmInput = "12345678";
 
             SeleniumWaiters.WaitElement(_webDriver, _moderatorsListButton);
             _webDriver.FindElement(_moderatorsListButton).Click();
@@ -151,7 +156,20 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(ConfirmPasswordInput).SendKeys(passwordConfirmInput);
             ExplicitWaiters.WaitForTextEntered(_webDriver, ConfirmPasswordInput, passwordConfirmInput);
 
-            SeleniumWaiters.WaitSomeInterval(2);
+            _webDriver.FindElement(BirthdDateInput).Click();
+            SeleniumWaiters.WaitElement(_webDriver, CreateModeratorAccountForm);
+
+            _webDriver.FindElement(DatePickerYear).Click();
+            SeleniumWaiters.WaitElement(_webDriver, DatePickerSelectYear);
+
+            _webDriver.FindElement(DatePickerSelectYear).Click();
+            SeleniumWaiters.WaitElement(_webDriver, DatePickerOkButton);
+
+            _webDriver.FindElement(DatePickerOkButton).Click();
+
+            _webDriver.FindElement(CreateAccountButton).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
             return new AdminPanel(_webDriver);
         }
     }

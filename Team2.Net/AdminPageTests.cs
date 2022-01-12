@@ -83,6 +83,7 @@ namespace Team2.Net
         {
             _adminPanel.AddModerator();
 
+            Assert.AreEqual("Austin Powers", _adminPanel.GetNameModerator());
         }
     }
 }

@@ -131,7 +131,7 @@ namespace Team2.Net.PageObjects
         public AdminPanel AddModerator()
         {
             string nameInput = "Austin Powers";
-            string emailInput = "austinmoderator181@test.com";
+            string emailInput = "austinmoderator@test.com";
             string phoneNumberInput = "+380000000753";
             string passwordInput = "12345678";
             string passwordConfirmInput = "12345678";

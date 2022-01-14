@@ -35,7 +35,6 @@ namespace Team2.Net.PageObjects
 
         // Restaurants additional buttons
         private readonly By AdditionalButtonTaylorIncRest = By.XPath(titleRestaurantWithName + "//following::button[contains(@aria-label,'More')]");
-        private readonly By ManageButtonButtonTaylorIncRest = By.XPath(titleRestaurantWithName + "//following::span[contains(text(),'Manage')]");
 
         // Manage buttons
         // Menues:

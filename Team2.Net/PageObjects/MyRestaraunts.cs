@@ -98,8 +98,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ManageButtonButtonTaylorIncRest);
-            _webDriver.FindElement(ManageButtonButtonTaylorIncRest).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ManageButton);
+            _webDriver.FindElement(ManageButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, MenuesButton);
             _webDriver.FindElement(MenuesButton).Click();
@@ -124,8 +124,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
             
-            SeleniumWaiters.WaitElement(_webDriver, ManageButtonButtonTaylorIncRest);
-            _webDriver.FindElement(ManageButtonButtonTaylorIncRest).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ManageButton);
+            _webDriver.FindElement(ManageButton).Click();
             
             SeleniumWaiters.WaitElement(_webDriver, MenuesButton);
             _webDriver.FindElement(MenuesButton).Click();
@@ -155,8 +155,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ManageButtonButtonTaylorIncRest);
-            _webDriver.FindElement(ManageButtonButtonTaylorIncRest).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ManageButton);
+            _webDriver.FindElement(ManageButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, WaitersButton);
             _webDriver.FindElement(WaitersButton).Click();
@@ -189,8 +189,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ManageButtonButtonTaylorIncRest);
-            _webDriver.FindElement(ManageButtonButtonTaylorIncRest).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ManageButton);
+            _webDriver.FindElement(ManageButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, WaitersButton);
             _webDriver.FindElement(WaitersButton).Click();
@@ -213,8 +213,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ManageButtonButtonTaylorIncRest);
-            _webDriver.FindElement(ManageButtonButtonTaylorIncRest).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ManageButton);
+            _webDriver.FindElement(ManageButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, AdministratorButton);
             _webDriver.FindElement(AdministratorButton).Click();
@@ -247,8 +247,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ManageButtonButtonTaylorIncRest);
-            _webDriver.FindElement(ManageButtonButtonTaylorIncRest).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ManageButton);
+            _webDriver.FindElement(ManageButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, AdministratorButton);
             _webDriver.FindElement(AdministratorButton).Click();

@@ -148,7 +148,7 @@ namespace Team2.Net.PageObjects
         public MyRestaraunts AddWaiter()
         {
             string nameInput = "Sergio";
-            string emailInput = "potatovich6@mail.com";
+            string emailInput = "potatovich@mail.com";
             string passwordInput = "WorldQ123";
             string phoneNumberInput = "+380999999999";
 
@@ -206,7 +206,7 @@ namespace Team2.Net.PageObjects
         public MyRestaraunts AddAdministrator()
         {
             string nameInput = "Mahid";
-            string emailInput = "mahid3@mail.com";
+            string emailInput = "mahid@mail.com";
             string passwordInput = "WorldQ123";
             string phoneNumberInput = "+380999999999";
 

@@ -16,7 +16,7 @@ namespace Team2.Net.PageObjects
         public BasePage SignUp()
         {
             string nameInput = "Austin Powers";
-            string emailInput = "austinpowersowner12@test.com";
+            string emailInput = "austinpowersowner@test.com";
             string phoneNumberInput = "+380000001231";
             string passwordInput = "12345678";
             string passwordConfirmInput = "12345678";

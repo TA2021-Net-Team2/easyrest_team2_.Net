@@ -22,8 +22,6 @@ namespace Team2.Net
             autorizationPage = new Authorization(_webDriver);
             restaurantsListPage = new RestaurantsList(_webDriver);
             restaurantMenu = new RestaurantMenu(_webDriver);
-            //AdminLogin();
-
         }
 
         [Test]

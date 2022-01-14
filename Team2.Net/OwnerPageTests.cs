@@ -64,5 +64,53 @@ namespace Team2.Net
 
         }
 
+        // Owner auto tests PART 2 by Bohdan Oleksiichuk
+        [Test]
+        public void MakeMenuPrimaryTest()
+        {
+            _myRestaraunts.MakeMenuPrimary();
+
+            Assert.AreEqual("Make not primary", _myRestaraunts.GetNotPrimaryStatus());
+        }
+
+        [Test]
+        public void MakeMenuNotPrimaryTest()
+        {
+            _myRestaraunts.MakeMenuNotPrimary();
+
+            Assert.AreEqual("Make primary", _myRestaraunts.GetPrimaryStatus());
+        }
+
+        [Test]
+        public void AddWaiterTest()
+        {
+            _myRestaraunts.AddWaiter();
+
+            Assert.AreEqual("User successfully added", _myRestaraunts.GetSuccessStatusAdd());
+        }
+
+        [Test]
+        public void DeleteWaiterTest()
+        {
+            _myRestaraunts.DeleteWaiter();
+
+            Assert.False(_myRestaraunts.GetFirstWaiter());
+        }
+
+        [Test]
+        public void AddAdministratorTest()
+        {
+            _myRestaraunts.AddAdministrator();
+
+            Assert.AreEqual("User successfully added", _myRestaraunts.GetSuccessStatusAdd());
+        }
+
+        [Test]
+        public void DeleteAdministratorTest()
+        {
+            _myRestaraunts.DeleteAdministrator();
+
+            Assert.False(_myRestaraunts.GetFirstAdministrator());
+        }
     }
 }

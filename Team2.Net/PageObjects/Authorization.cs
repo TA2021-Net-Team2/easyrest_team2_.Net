@@ -31,15 +31,14 @@ namespace Team2.Net.PageObjects
             return _webDriver.FindElement(ErrorText).Text;
         }
         
-
         public Authorization SignInFromGoogleAccount()
         {
+            SeleniumWaiters.WaitElement(_webDriver, GoogleButton);
             _webDriver.FindElement(GoogleButton).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, ErrorText);
 
             return new Authorization(_webDriver);
-
         }
     }
 }

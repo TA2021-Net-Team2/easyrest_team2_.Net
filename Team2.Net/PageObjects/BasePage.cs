@@ -37,16 +37,15 @@ namespace Team2.Net.PageObjects
 
         public Registration Registration()
         {
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, _signUpButton);
             _webDriver.FindElement(_signUpButton).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
-            
             return new Registration(_webDriver);
         }
 
         public BasePage OpenRestaurantList()
         {
+            SeleniumWaiters.WaitElement(_webDriver, RestaurantListButton);
             _webDriver.FindElement(RestaurantListButton).Click();
 
             return new BasePage(_webDriver);

@@ -16,7 +16,7 @@ namespace Team2.Net.PageObjects
         public BasePage SignUp()
         {
             string nameInput = "Austin Powers";
-            string emailInput = "austinpowersowner1@test.com";
+            string emailInput = "austinpowersowner12@test.com";
             string phoneNumberInput = "+380000001231";
             string passwordInput = "12345678";
             string passwordConfirmInput = "12345678";
@@ -46,12 +46,11 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, DatePickerOkButton);
 
             _webDriver.FindElement(DatePickerOkButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, CreateAccountButton);
 
             _webDriver.FindElement(CreateAccountButton).Click();
 
             SeleniumWaiters.ShouldLocate(_webDriver, "http://localhost:3000/log-in");
-
-            SeleniumWaiters.WaitSomeInterval(1);
 
             return new BasePage(_webDriver);
         }

@@ -17,10 +17,7 @@ namespace Team2.Net.PageObjects
         private static string CoctailName  = "//*[contains(text(),'Jamaican ginger beer & pineapple bundt cake')]";
 
         private readonly By CoctailMenuInput = By.XPath(CoctailName + "//following::input[contains(@type,'number')]");
-
         private readonly By CoctailAddToCartButton = By.XPath(CoctailName + "//following::button[contains(@aria-label, 'Add to cart')]");
-
         private readonly By SubmitOrderButton = By.XPath("//span[contains(text(), 'Submit order')]");
-        
     }
 }

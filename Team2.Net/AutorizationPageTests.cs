@@ -18,6 +18,7 @@ namespace Team2.Net
     [TestFixture("petermoderator@test.com", "1")]
     //Waiter
     [TestFixture("jeremyvaughan@test.com", "1")]
+
     public class AutorizationPageTests : BaseTest
     {
         private string StartLogin;
@@ -29,7 +30,7 @@ namespace Team2.Net
             Password = password;
         }
 
-        [Test]
+        //[Test]
         public void AuthorizationTest()
         {
             // Given

@@ -19,9 +19,8 @@ namespace Team2.Net.PageObjects
         public RestaurantsList CreateOrder()
         {
             SeleniumWaiters.WaitElement(_webDriver, WatchMenu);
-            SeleniumWaiters.WaitSomeInterval(2);
             _webDriver.FindElement(WatchMenu).Click();
-            SeleniumWaiters.WaitSomeInterval(2);
+
             return new RestaurantsList(_webDriver);
         }  
     }

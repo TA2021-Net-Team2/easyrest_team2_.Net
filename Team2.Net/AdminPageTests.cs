@@ -12,22 +12,29 @@ namespace Team2.Net
         private const string PasswordAdmin = "1";
 
         private AdminPanel _adminPanel;
+        private BasePage _basePage;
 
         [SetUp]
         public override void Setup()
         {
             base.Setup();
-
-            AdminLogin();
+            Login();
             _adminPanel = new AdminPanel(_webDriver);
+            _basePage = new BasePage(_webDriver);
         }
 
-        private void AdminLogin()
+        private void Login()
         {
             var page = new BasePage(_webDriver);
             page
                 .SignIn()
                 .Login(StartLoginAdmin, PasswordAdmin);
+        }
+
+        [Test]
+        public void _AdminLoginTest()
+        {
+            Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]

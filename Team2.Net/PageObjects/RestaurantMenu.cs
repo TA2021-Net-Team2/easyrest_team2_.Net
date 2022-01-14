@@ -18,15 +18,18 @@ namespace Team2.Net.PageObjects
 
         public RestaurantMenu CoctailAddToCart()
         {
+            SeleniumWaiters.WaitElement(_webDriver, CoctailMenuInput); 
             _webDriver.FindElement(CoctailMenuInput).SendKeys(OpenQA.Selenium.Keys.LeftShift + OpenQA.Selenium.Keys.Home);
-            SeleniumWaiters.WaitSomeInterval(1);
-            _webDriver.FindElement(CoctailMenuInput).SendKeys("3");
-            SeleniumWaiters.WaitSomeInterval(1);
 
+            SeleniumWaiters.WaitElement(_webDriver, CoctailMenuInput);
+            _webDriver.FindElement(CoctailMenuInput).SendKeys("3");
+
+            SeleniumWaiters.WaitElement(_webDriver, CoctailAddToCartButton);
             _webDriver.FindElement(CoctailAddToCartButton).Click();
-            SeleniumWaiters.WaitSomeInterval(1);
+
+            SeleniumWaiters.WaitElement(_webDriver, SubmitOrderButton);
             _webDriver.FindElement(SubmitOrderButton).Click();
-            SeleniumWaiters.WaitSomeInterval(1);
+
             return new RestaurantMenu(_webDriver);
         }
     }

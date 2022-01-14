@@ -38,7 +38,8 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
             return new AdminPanel(_webDriver);
         }
 
@@ -54,7 +55,8 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
             return new AdminPanel(_webDriver);
         }
 
@@ -70,7 +72,8 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
             return new AdminPanel(_webDriver);
         }
 
@@ -86,7 +89,8 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
             return new AdminPanel(_webDriver);
         }
 
@@ -102,7 +106,8 @@ namespace Team2.Net.PageObjects
 
             _webDriver.FindElement(FirstUserButtonLockStatusActive).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
             return new AdminPanel(_webDriver);
         }
 
@@ -117,12 +122,12 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, BannedStatusXPath);
 
             _webDriver.FindElement(FirstUserButtonLockStatusBanned).Click();
-          
-            SeleniumWaiters.WaitSomeInterval(1);
+
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+
             return new AdminPanel(_webDriver);
         }
 
-        //in process...
         public AdminPanel AddModerator()
         {
             string nameInput = "Austin Powers";
@@ -137,39 +142,38 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AddModeratorButton);
             _webDriver.FindElement(AddModeratorButton).Click();
 
-            SeleniumWaiters.WaitSomeInterval(2);
-
             SeleniumWaiters.WaitElement(_webDriver, CreateModeratorAccountForm);
-
             _webDriver.FindElement(NameInput).SendKeys(nameInput);
+
             ExplicitWaiters.WaitForTextEntered(_webDriver, NameInput, nameInput);
-
             _webDriver.FindElement(EmailInput).SendKeys(emailInput);
+
             ExplicitWaiters.WaitForTextEntered(_webDriver, EmailInput, emailInput);
-
             _webDriver.FindElement(PhoneNumberInput).SendKeys(phoneNumberInput);
+
             ExplicitWaiters.WaitForTextEntered(_webDriver, PhoneNumberInput, phoneNumberInput);
-
             _webDriver.FindElement(PasswordInput).SendKeys(passwordInput);
+
             ExplicitWaiters.WaitForTextEntered(_webDriver, PasswordInput, passwordInput);
-
             _webDriver.FindElement(ConfirmPasswordInput).SendKeys(passwordConfirmInput);
+
             ExplicitWaiters.WaitForTextEntered(_webDriver, ConfirmPasswordInput, passwordConfirmInput);
-
             _webDriver.FindElement(BirthdDateInput).Click();
+
             SeleniumWaiters.WaitElement(_webDriver, CreateModeratorAccountForm);
-
             _webDriver.FindElement(DatePickerYear).Click();
+
             SeleniumWaiters.WaitElement(_webDriver, DatePickerSelectYear);
-
             _webDriver.FindElement(DatePickerSelectYear).Click();
-            SeleniumWaiters.WaitElement(_webDriver, DatePickerOkButton);
 
+            SeleniumWaiters.WaitElement(_webDriver, DatePickerOkButton);
             _webDriver.FindElement(DatePickerOkButton).Click();
 
+            SeleniumWaiters.WaitElement(_webDriver, CreateAccountButton);
             _webDriver.FindElement(CreateAccountButton).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, listUsers);
+            
             return new AdminPanel(_webDriver);
         }
     }

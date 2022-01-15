@@ -21,6 +21,13 @@ namespace Team2.Net.PageObjects
              return _webDriver.FindElement(_identificateEmail).Text;
          }
 
+        
+        public bool IdentificateShowLess()
+        {
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, _buttonShowLess);
+        }
+
+
         public string WaitingForConfirm()
         {
             return _webDriver.FindElement(_identificateConfirmAllert).Text;
@@ -79,6 +86,79 @@ namespace Team2.Net.PageObjects
 
             return new ClientPanel(_webDriver);
         }
+
+        public ClientPanel PressTabAssepted()
+        {
+           
+            SeleniumWaiters.WaitElement(_webDriver, _buttonAcceptedOrders);
+            _webDriver.FindElement(_buttonAcceptedOrders).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonShowList);
+            _webDriver.FindElement(_buttonShowList).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new ClientPanel(_webDriver);
+        }
+
+        public ClientPanel AssignedWaiterTab()
+        {
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonAssignedWaiter);
+            _webDriver.FindElement(_buttonAssignedWaiter).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonShowList);
+            _webDriver.FindElement(_buttonShowList).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new ClientPanel(_webDriver);
+        }
+
+        public ClientPanel PressInProgress()
+        {
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonPressInProgress);
+            _webDriver.FindElement(_buttonPressInProgress).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonShowList);
+            _webDriver.FindElement(_buttonShowList).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new ClientPanel(_webDriver);
+        }
+
+
+        public ClientPanel PressRemovedOrders()
+        {
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonRemoved);
+            _webDriver.FindElement(_buttonRemoved).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new ClientPanel(_webDriver);
+        }
+
+        public ClientPanel PressFaildOrders()
+        {
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonFailed);
+            _webDriver.FindElement(_buttonFailed).Click();
+
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new ClientPanel(_webDriver);
+        }
+
+
+
+
+
+
+
+
 
     }
 

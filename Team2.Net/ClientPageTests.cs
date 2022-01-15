@@ -32,27 +32,24 @@ namespace Team2.Net
                 .Login(StartLoginClient, PasswordClient);
         }
 
+        public void MyCurrentOrdersListTest()  // Current orders
+        {
+            _restaurantsList.RedirectToPersonalInfo();
+            _clientPanel.MyCurrentOrders();
+        }
+
+        public void MyHistoryOrdersListTest()  // History
+        {
+            _restaurantsList.RedirectToPersonalInfo();
+            _clientPanel.MyHistoryOrders();
+        }
+
+
         [Test]
         public void MyPersonalInfoListTest()  //personal info
         {
             _restaurantsList.RedirectToPersonalInfo();
             Assert.AreEqual("katherinebrennan@test.com", _clientPanel.IdentificateEmail());
-        }
-
-        [Test]
-        public void MyCurrentOrdersListTest()  // Current orders
-        {
-            MyPersonalInfoListTest();
-            _clientPanel.MyCurrentOrders();
-            //Assert.AreEqual("katherinebrennan@test.com", _clientPanel.IdentificateEmail()); доробить перевірку
-        }
-
-        [Test]
-        public void MyHistoryOrdersListTest()  // History
-        {
-            MyPersonalInfoListTest();
-            _clientPanel.MyHistoryOrders();
-            //Assert.AreEqual("katherinebrennan@test.com", _clientPanel.IdentificateEmail());   доробить перевірку
         }
 
         [Test]
@@ -64,11 +61,57 @@ namespace Team2.Net
         }
 
         [Test]
-        public void MakeReorderFromDeclinedTest()  // 113
+        public void MakeReorderFromDeclinedTest()  // 114
         {
             MyHistoryOrdersListTest();
             _clientPanel.MakeReorderFromDeclined();
             Assert.AreEqual("Order status changed to Waiting for confirm", _clientPanel.WaitingForConfirm());
         }
+
+        [Test]
+        public void WatchAcceptedOrdersTabTest()  // 115
+        {
+            MyCurrentOrdersListTest();
+            _clientPanel.PressTabAssepted();
+            Assert.True(_clientPanel.IdentificateShowLess());
+          
+        }
+               
+        [Test]
+        public void WatchAssignedWaiterTabTest()  // 116
+        {
+            MyCurrentOrdersListTest();
+            _clientPanel.PressTabAssepted();
+            Assert.True(_clientPanel.IdentificateShowLess());
+        }
+
+        [Test]
+        public void WatchInProgressTabTest()  // 117
+        {
+            MyCurrentOrdersListTest();
+            _clientPanel.PressInProgress();
+            Assert.True(_clientPanel.IdentificateShowLess());
+        }
+
+        [Test]
+        public void WatchRemovedOrdersTest()  // 118
+        {
+            MyHistoryOrdersListTest();
+            _clientPanel.PressRemovedOrders();
+
+        }
+
+        [Test]
+        public void WatchFaildOrdersTest()  // 119
+        {
+            MyHistoryOrdersListTest();
+            _clientPanel.PressFaildOrders();
+
+        }
+
+
+
+
+
     }
 }

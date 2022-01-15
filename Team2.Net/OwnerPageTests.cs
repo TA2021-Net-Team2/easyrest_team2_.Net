@@ -36,35 +36,80 @@ namespace Team2.Net
                 .Login(StartLoginOwner, PasswordOwner);
         }
 
+        // Owner tests Meleshchuk
+
         [Test]
         public void CreateOwnRestaraunt()
         {
-            var pageMyRestaraunts = new MyRestaraunts(_webDriver);
-            pageMyRestaraunts.AddNewRestaraunt(restarauntName,restarauntAddress,restarauntPhone,restarauntText,secondText);
+            string restarauntName = "Matsuri";
+            string restarauntAddress = "Village 8 street 999";
+            string restarauntPhone = "380999999999";
+            string restarauntText = "Good place";
+            string secondText = "Good place";
+
+            _myRestaraunts.AddNewRestaraunt(restarauntName, restarauntAddress, restarauntPhone, restarauntText, secondText);
 
             Assert.AreEqual("Restaurant was successfully created", _myRestaraunts.GetActivityStatusRestaraunt());
         }
 
         [Test]
-        public void AddRestarauntToArchive()
+        public void ArchiveRestaraunt()
         {
-            var pageMyRestaraunts = new MyRestaraunts(_webDriver);
-            pageMyRestaraunts.ArchiveRestaraunt();
-                
-            //Assert.AreEqual();
+            _myRestaraunts.ArchiveRestaraunt();
+
+            Assert.AreEqual("ARCHIVED", _myRestaraunts.GetArchiveStatus());
         }
         [Test]
         public void UnarchiveRestaraunt()
         {
+            _myRestaraunts.UnrchiveRestaraunt();
 
+            Assert.AreEqual("NOT APPROVED", _myRestaraunts.GetUnarchiveStatus());
         }
         [Test]
         public void EditRestarauntInformation()
         {
+            _myRestaraunts.EditRestarauntInformation();
 
+            Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
+        }
+        [Test]
+        public void EditListMenu()
+        {
+            _myRestaraunts.EditListMenu();
+
+            //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
+        }
+        [Test]
+        public void AddNewObjectToMenu()
+        {
+            _myRestaraunts.AddNewObjectToMenu();
+
+            //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
+        }
+        [Test]
+        public void DeleteObjectToMenu()
+        {
+            _myRestaraunts.DeleteObjectToMenu();
+
+            //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
+        }
+        [Test]
+        public void CreateNewListMenu()
+        {
+            _myRestaraunts.CreateNewListMenu();
+
+            //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
+        }
+        [Test]
+        public void CreateNewImageListMenu()
+        {
+            _myRestaraunts.CreateNewImageListMenu();
+
+            //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
         }
 
-        // Owner auto tests PART 2 by Bohdan Oleksiichuk
+        // ****** Owner auto tests PART 2 by Bohdan Oleksiichuk ******
         [Test]
         public void MakeMenuPrimaryTest()
         {

@@ -27,6 +27,16 @@ namespace Team2.Net.PageObjects
             return ExplicitWaiters.TryForElementDisplayed(_webDriver, _buttonShowLess);
         }
 
+        public string IdentificateDeletedFromDraft()
+        {
+            return _webDriver.FindElement(_deletedOrderButton).Text;
+        }
+
+        public string IdentificateDeclinedFromWaiting()
+        {
+            return _webDriver.FindElement(_declinedOrderButton).Text;
+        }
+        
 
         public string WaitingForConfirm()
         {
@@ -152,10 +162,40 @@ namespace Team2.Net.PageObjects
             return new ClientPanel(_webDriver);
         }
 
+        public ClientPanel MakeDeleteFromDraft()
+        {
+            SeleniumWaiters.WaitElement(_webDriver, _tabDraft);
+            _webDriver.FindElement(_tabDraft).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonShowList);
+            _webDriver.FindElement(_buttonShowList).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _buttonDeletefromDraft);
+            _webDriver.FindElement(_buttonDeletefromDraft).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _deletedOrderButton);
+
+            return new ClientPanel(_webDriver);
+        }
 
 
+        public ClientPanel MakeDeclinedFromWaiting()
+        {
+            SeleniumWaiters.WaitElement(_webDriver, _tabWaitingForConfirm);
+            _webDriver.FindElement(_tabWaitingForConfirm).Click();
 
+            SeleniumWaiters.WaitElement(_webDriver, _buttonShowList);
+            _webDriver.FindElement(_buttonShowList).Click();
 
+            SeleniumWaiters.WaitElement(_webDriver, _buttonDeclinefromWaiting);
+            _webDriver.FindElement(_buttonDeclinefromWaiting).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, _declinedOrderButton);
+
+            return new ClientPanel(_webDriver);
+        }
+
+        
 
 
 

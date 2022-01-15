@@ -109,6 +109,23 @@ namespace Team2.Net
 
         }
 
+        [Test]
+        public void MakeDeleteFromDraftTest()  // 111
+        {
+            MyCurrentOrdersListTest();
+            _clientPanel.MakeDeleteFromDraft();
+            Assert.AreEqual("Order deleted", _clientPanel.IdentificateDeletedFromDraft());
+
+        }
+
+        [Test]
+        public void MakeDeclinedFromWaitingTest()  // 112
+        {
+            MyCurrentOrdersListTest();
+            _clientPanel.MakeDeclinedFromWaiting();
+            Assert.AreEqual("Order declined", _clientPanel.IdentificateDeclinedFromWaiting());
+
+        }
 
 
 

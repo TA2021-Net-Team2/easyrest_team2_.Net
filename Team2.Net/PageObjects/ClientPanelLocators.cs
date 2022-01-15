@@ -26,13 +26,19 @@ namespace Team2.Net.PageObjects
         private readonly By _buttonRemoved = By.XPath("//span[contains (text(), 'Removed')]");
         private readonly By _buttonFailed = By.XPath("//span[contains (text(), 'Failed')]");
 
-
-
-
+        private readonly By _tabDraft = By.XPath("//span[contains (text(), 'Draft')]");
+        private readonly By _tabWaitingForConfirm = By.XPath("//span[contains (text(), 'Waiting for confirm')]");
+        private readonly By _buttonDeclinefromWaiting = By.XPath("//span[text()= 'Decline'][1]");
+        private readonly By _buttonDeletefromDraft = By.XPath("//span[text()= 'Delete'][1]");
 
         private readonly By _buttonShowLess = By.XPath("//div[contains(@class, 'expanded')]");
 
+        private readonly By _deletedOrderButton = By.XPath("//p[contains (text(), 'Order deleted')]");
+        private readonly By _declinedOrderButton = By.XPath("//p[contains (text(), 'Order declined')]");
+
         
+
+
 
 
 

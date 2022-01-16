@@ -172,7 +172,7 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, PumpkinSoupEditText);
             _webDriver.FindElement(PumpkinSoupEditText).Click();
-            _webDriver.FindElement(PumpkinSoupEditText).SendKeys(OpenQA.Selenium.Keys.LeftShift + OpenQA.Selenium.Keys.Home);
+            _webDriver.FindElement(PumpkinSoupEditText).SendKeys(OpenQA.Selenium.Keys.Control + "A");
             _webDriver.FindElement(PumpkinSoupEditText).SendKeys("There is nothing to eat");
 
             SeleniumWaiters.WaitElement(_webDriver, PumpkinSoupSaveButton);

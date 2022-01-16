@@ -50,13 +50,13 @@ namespace Team2.Net.PageObjects
         private readonly By ImageMenuButton = By.XPath("//span[contains(text(),'Image Menu')]");
         private readonly By CreateMenuButton = By.XPath("//span[contains(text(),'Create menu')]");
 
-        private readonly By PumpkinSoup = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]");
-        private readonly By MenuDeleteButton = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[5]/td[8]/div/button[1]");
-        private readonly By MenuEditButton = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]/td[8]/div/button[2]");
-        private readonly By PumpkinSoupEditText = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]/td[5]/div/div/textarea");
-        private readonly By PumpkinSoupSaveButton = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]/td[1]/button");
+        private readonly By PumpkinSoup = By.XPath("//tr[1][contains(@class, 'MenuTable')]");
+        private readonly By MenuDeleteButton = By.XPath("//div[contains(@class, 'actionsBtns')][1]/button");
+        private readonly By MenuEditButton = By.XPath("//div[contains(@class, 'actionsBtns')]/button/following-sibling::button");
+        private readonly By PumpkinSoupEditText = By.XPath("//tr[1][contains(@class, 'MenuTable')]/td[3]/following::textarea[1]");
+        private readonly By PumpkinSoupSaveButton = By.XPath("//tr[1][contains(@class, 'MenuTable')]/td[1]");
 
-        private readonly By PersianLamb = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[5]");
+        private readonly By PersianLamb = By.XPath("//tr[1][contains(@class, 'MenuTable')]");
 
         //Archive / unarchive
         private readonly By ArchiveButton = By.XPath("//*[span='Archive']");
@@ -77,7 +77,7 @@ namespace Team2.Net.PageObjects
 
         private readonly By NameMenuFormInput = By.XPath("//input[@name='menuName']");
 
-        private readonly By ImageButton = By.XPath("/html/body/div/div/main/div/form/div/div[1]/div/div/div/div/div/div[3]/div/div/label[2]");
+        private readonly By ImageButton = By.XPath("//span[contains(@class,'colorPrimary')]");
         private readonly By SelectPhoto = By.XPath("//*[span='Select File']");
 
         private readonly By NextButton = By.XPath("//*[span='Next']");
@@ -85,9 +85,6 @@ namespace Team2.Net.PageObjects
         private readonly By FinishImageButton = By.XPath("//div[contains(@class, 'ImageUploaderPresentational')]//following::span[contains(text(),'Finish')][2]");
 
         private readonly By SelectPhotoList = By.XPath("//div[contains(@class,'imgInput')]");
-
-
-        // private readonly By Add_Button = By.XPath("//*/div/main/div/form/div/div[3]/div/div/div/div/div/div[2]/div/div[2]/table/tbody[1]/tr/td[1]/button/span[2]");
 
         // ***** Locators by Bohdan Oleksiichuk *****
 

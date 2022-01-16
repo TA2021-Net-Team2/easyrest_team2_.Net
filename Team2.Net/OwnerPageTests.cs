@@ -10,12 +10,6 @@ namespace Team2.Net
     {
         private const string StartLoginOwner = "earlmorrison@test.com";
         private const string PasswordOwner = "1111";
-        private const string restarauntName = "Matsuri";
-        private const string restarauntAddress = "Village 8 street 999";
-        private const string restarauntPhone = "380999999999";
-        private const string restarauntText = "Good place";
-        private const string secondText = "Good place";
-
 
         private MyRestaraunts _myRestaraunts;
 
@@ -39,7 +33,7 @@ namespace Team2.Net
         // Owner tests Meleshchuk
 
         [Test]
-        public void CreateOwnRestaraunt()
+        public void CreateOwnRestarauntTest()
         {
             string restarauntName = "Matsuri";
             string restarauntAddress = "Village 8 street 999";
@@ -53,56 +47,56 @@ namespace Team2.Net
         }
 
         [Test]
-        public void ArchiveRestaraunt()
+        public void ArchiveRestarauntTest()
         {
             _myRestaraunts.ArchiveRestaraunt();
 
             Assert.AreEqual("ARCHIVED", _myRestaraunts.GetArchiveStatus());
         }
         [Test]
-        public void UnarchiveRestaraunt()
+        public void UnarchiveRestarauntTest()
         {
             _myRestaraunts.UnrchiveRestaraunt();
 
             Assert.AreEqual("NOT APPROVED", _myRestaraunts.GetUnarchiveStatus());
         }
         [Test]
-        public void EditRestarauntInformation()
+        public void EditRestarauntInformationTest()
         {
             _myRestaraunts.EditRestarauntInformation();
 
             Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
         }
         [Test]
-        public void EditListMenu()
+        public void EditListMenuTest()
         {
             _myRestaraunts.EditListMenu();
 
             //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
         }
         [Test]
-        public void AddNewObjectToMenu()
+        public void AddNewObjectToMenuTest()
         {
             _myRestaraunts.AddNewObjectToMenu();
 
             //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
         }
         [Test]
-        public void DeleteObjectToMenu()
+        public void DeleteObjectToMenuTest()
         {
             _myRestaraunts.DeleteObjectToMenu();
 
             //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
         }
         [Test]
-        public void CreateNewListMenu()
+        public void CreateNewListMenuTest()
         {
             _myRestaraunts.CreateNewListMenu();
 
             //Assert.AreEqual("Restaurant was successfully updated", _myRestaraunts.GetEditStatusRestaraunt());
         }
         [Test]
-        public void CreateNewImageListMenu()
+        public void CreateNewImageListMenuTest()
         {
             _myRestaraunts.CreateNewImageListMenu();
 

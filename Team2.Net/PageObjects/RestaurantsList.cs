@@ -22,6 +22,17 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(WatchMenu).Click();
 
             return new RestaurantsList(_webDriver);
-        }  
+        }
+
+        public RestaurantsList RedirectToPersonalInfo()
+        {
+            SeleniumWaiters.WaitElement(_webDriver, avatarClientButton);
+            _webDriver.FindElement(avatarClientButton).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, avatarMyProfileButton);
+            _webDriver.FindElement(avatarMyProfileButton).Click();
+            SeleniumWaiters.WaitSomeInterval(1);
+            return new RestaurantsList(_webDriver);
+        }
     }
 }

@@ -98,6 +98,7 @@ namespace Team2.Net
         {
             MyHistoryOrdersListTest();
             _clientPanel.PressRemovedOrders();
+            Assert.True(_clientPanel.GetIdentificateSelected());
 
         }
 
@@ -106,7 +107,7 @@ namespace Team2.Net
         {
             MyHistoryOrdersListTest();
             _clientPanel.PressFaildOrders();
-
+            Assert.True(_clientPanel.GetIdentificateSelected());
         }
 
         [Test]

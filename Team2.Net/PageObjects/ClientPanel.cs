@@ -36,7 +36,13 @@ namespace Team2.Net.PageObjects
         {
             return _webDriver.FindElement(_declinedOrderButton).Text;
         }
-        
+
+        public bool GetIdentificateSelected()
+        {
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, _identificateSelected);
+        }
+
+
 
         public string WaitingForConfirm()
         {

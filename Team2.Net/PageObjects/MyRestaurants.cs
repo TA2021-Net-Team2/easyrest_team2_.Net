@@ -9,11 +9,11 @@ using OpenQA.Selenium.Interactions;
 
 namespace Team2.Net.PageObjects
 {
-    public partial class MyRestaraunts
+    public partial class MyRestaurants
     {
         private IWebDriver _webDriver;
 
-        public MyRestaraunts(IWebDriver webDriver)
+        public MyRestaurants(IWebDriver webDriver)
         {
             _webDriver = webDriver;
             Actions actions = new Actions(_webDriver);
@@ -34,7 +34,22 @@ namespace Team2.Net.PageObjects
         {
             return _webDriver.FindElement(statusEdited).Text;
         }
-
+        public bool GetDeleteObjectStatus()
+        {
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, PumpkinSoupCheck);
+        }
+        public string GetEditedObjectStatus()
+        {
+            return _webDriver.FindElement(statusEditedObject).Text;
+        }
+        public bool GetCreateNewImageMenuStatus()
+        {
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, NotSimpleImageButton);
+        }
+        public bool GetCreateNewListMenuStatus()
+        {
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, SimpleListButton);
+        }
         public string GetPrimaryStatus()
         {
             return _webDriver.FindElement(MakePrimaryButton).Text;
@@ -59,7 +74,7 @@ namespace Team2.Net.PageObjects
             return ExplicitWaiters.TryForElementDisplayed(_webDriver, MahidAdministratorCheck);
         }
 
-        public MyRestaraunts AddNewRestaraunt(string RestarauntName, string RestarauntAddress, string RestarauntPhone, string RestarauntText, string SecondText)
+        public MyRestaurants AddNewRestaraunt(string RestarauntName, string RestarauntAddress, string RestarauntPhone, string RestarauntText, string SecondText)
         {
             SeleniumWaiters.WaitElement(_webDriver, AddRestarauntButton);
             _webDriver.FindElement(AddRestarauntButton).Click();
@@ -85,7 +100,7 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, RestarauntTagSushiFormInput);
             _webDriver.FindElement(RestarauntTagSushiFormInput).Click();
 
-            SeleniumWaiters.WaitSomeInterval(1);
+            SeleniumWaiters.WaitElement(_webDriver, RestarauntEmptyPlace);
             _webDriver.FindElement(RestarauntEmptyPlace).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, RestarauntTextDescriptionFormInput);
@@ -96,9 +111,9 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, statusAdded);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts ArchiveRestaraunt()
+        public MyRestaurants ArchiveRestaraunt()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonForChapmanPLC);
             _webDriver.FindElement(AdditionalButtonForChapmanPLC).Click();
@@ -108,9 +123,9 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, StatusArchived);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts UnrchiveRestaraunt()
+        public MyRestaurants UnrchiveRestaraunt()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonForChapmanPLC);
             _webDriver.FindElement(AdditionalButtonForChapmanPLC).Click();
@@ -120,9 +135,9 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, StatusUnarchived);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts EditRestarauntInformation()
+        public MyRestaurants EditRestarauntInformation()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonForJohnsonPLC);
             _webDriver.FindElement(AdditionalButtonForJohnsonPLC).Click();
@@ -134,7 +149,7 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(EditButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, EditDescription);
-            _webDriver.FindElement(EditDescription).SendKeys(OpenQA.Selenium.Keys.LeftShift + OpenQA.Selenium.Keys.Home);
+            _webDriver.FindElement(EditDescription).SendKeys(OpenQA.Selenium.Keys.Control + "A");
 
             SeleniumWaiters.WaitElement(_webDriver, EditDescription);
             _webDriver.FindElement(EditDescription).SendKeys("Bla bla bla");
@@ -144,9 +159,9 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, statusEdited);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts EditListMenu()
+        public MyRestaurants EditObjectToMenu()
         {
             Actions actions = new Actions(_webDriver);
 
@@ -164,26 +179,26 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitSomeInterval(2);
 
-            IWebElement pk = _webDriver.FindElement(PumpkinSoup);
+            IWebElement pk = _webDriver.FindElement(PersianLambCheck);
             actions.MoveToElement(pk).Perform();
 
-            SeleniumWaiters.WaitElement(_webDriver, MenuEditButton);
-            _webDriver.FindElement(MenuEditButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, PersianLambEditButton);
+            _webDriver.FindElement(PersianLambEditButton).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, PumpkinSoupEditText);
-            _webDriver.FindElement(PumpkinSoupEditText).Click();
-            _webDriver.FindElement(PumpkinSoupEditText).SendKeys(OpenQA.Selenium.Keys.LeftShift + OpenQA.Selenium.Keys.Home);
-            _webDriver.FindElement(PumpkinSoupEditText).SendKeys("There is nothing to eat");
+            SeleniumWaiters.WaitElement(_webDriver, PersianLambEditText);
+            _webDriver.FindElement(PersianLambEditText).Click();
+            _webDriver.FindElement(PersianLambEditText).SendKeys(OpenQA.Selenium.Keys.Control + "A");
+            _webDriver.FindElement(PersianLambEditText).SendKeys("There is nothing to eat");
 
-            SeleniumWaiters.WaitElement(_webDriver, PumpkinSoupSaveButton);
-            _webDriver.FindElement(PumpkinSoupSaveButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, PersianLambSaveButton);
+            _webDriver.FindElement(PersianLambSaveButton).Click();
 
-            //SeleniumWaiters.WaitSomeInterval(5);
+            SeleniumWaiters.WaitElement(_webDriver,statusEditedObject);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
 
-        public MyRestaraunts AddNewObjectToMenu()
+        public MyRestaurants AddNewObjectToMenu()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonForTaylorInc);
             _webDriver.FindElement(AdditionalButtonForTaylorInc).Click();
@@ -233,9 +248,9 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AddMenuButton);
             _webDriver.FindElement(AddMenuButton).Click();
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts DeleteObjectToMenu()
+        public MyRestaurants DeleteObjectToMenu()
         {
             Actions actions = new Actions(_webDriver);
 
@@ -251,18 +266,18 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, CommonButton);
             _webDriver.FindElement(CommonButton).Click();
 
-            SeleniumWaiters.WaitSomeInterval(2);
-            IWebElement pk = _webDriver.FindElement(PersianLamb);
+            SeleniumWaiters.WaitSomeInterval(1);
+            IWebElement pk = _webDriver.FindElement(PumpkinSoupCheck);
             actions.MoveToElement(pk).Perform();
 
-            SeleniumWaiters.WaitElement(_webDriver, MenuDeleteButton);
-            _webDriver.FindElement(MenuDeleteButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, DeletePumpkinSoup);
+            _webDriver.FindElement(DeletePumpkinSoup).Click();
 
-            SeleniumWaiters.WaitSomeInterval(5);
+            SeleniumWaiters.WaitSomeInterval(2);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts CreateNewListMenu()
+        public MyRestaurants CreateNewListMenu()
         {
 
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonForTaylorInc);
@@ -322,9 +337,11 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, FinishListButton);
             _webDriver.FindElement(FinishListButton).Click();
 
-            return new MyRestaraunts(_webDriver);
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new MyRestaurants(_webDriver);
         }
-        public MyRestaraunts CreateNewImageListMenu()
+        public MyRestaurants CreateNewImageListMenu()
         {
             Actions actions = new Actions(_webDriver);
 
@@ -341,10 +358,10 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(CreateMenuButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, NameMenuFormInput);
-            _webDriver.FindElement(NameMenuFormInput).SendKeys("Simple");
+            _webDriver.FindElement(NameMenuFormInput).SendKeys("Not simple");
 
-            SeleniumWaiters.WaitElement(_webDriver, ImageButton);
-            _webDriver.FindElement(ImageButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, ImageMenuButton);
+            _webDriver.FindElement(ImageMenuButton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, NextButton);
             _webDriver.FindElement(NextButton).Click();
@@ -362,12 +379,14 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, FinishImageButton);
             _webDriver.FindElement(FinishImageButton).Click();
 
-            return new MyRestaraunts(_webDriver);
+            SeleniumWaiters.WaitSomeInterval(1);
+
+            return new MyRestaurants(_webDriver);
         }
 
         // Autotests Bohdan Oleksiichuk
 
-        public MyRestaraunts MakeMenuPrimary()
+        public MyRestaurants MakeMenuPrimary()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
@@ -390,10 +409,10 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalOptionsButton);
             _webDriver.FindElement(AdditionalOptionsButton).Click();
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
 
-        public MyRestaraunts MakeMenuNotPrimary()
+        public MyRestaurants MakeMenuNotPrimary()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
@@ -416,10 +435,10 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, AdditionalOptionsButton);
             _webDriver.FindElement(AdditionalOptionsButton).Click();
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
 
-        public MyRestaraunts AddWaiter()
+        public MyRestaurants AddWaiter()
         {
             string nameInput = "Sergio";
             string emailInput = "potatovich@mail.com";
@@ -455,10 +474,10 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, MessageSuccessfullyAdd);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
 
-        public MyRestaraunts DeleteWaiter()
+        public MyRestaurants DeleteWaiter()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
@@ -474,10 +493,10 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitSomeInterval(1);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
 
-        public MyRestaraunts AddAdministrator()
+        public MyRestaurants AddAdministrator()
         {
             string nameInput = "Mahid";
             string emailInput = "mahid@mail.com";
@@ -513,10 +532,10 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitElement(_webDriver, MessageSuccessfullyAdd);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
 
-        public MyRestaraunts DeleteAdministrator()
+        public MyRestaurants DeleteAdministrator()
         {
             SeleniumWaiters.WaitElement(_webDriver, AdditionalButtonTaylorIncRest);
             _webDriver.FindElement(AdditionalButtonTaylorIncRest).Click();
@@ -532,7 +551,7 @@ namespace Team2.Net.PageObjects
 
             SeleniumWaiters.WaitSomeInterval(1);
 
-            return new MyRestaraunts(_webDriver);
+            return new MyRestaurants(_webDriver);
         }
     }
 }

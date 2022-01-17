@@ -5,7 +5,7 @@ using OpenQA.Selenium;
 
 namespace Team2.Net.PageObjects
 {
-    public partial class MyRestaraunts
+    public partial class MyRestaurants
     {
         // ***** Locators by Serhii Meleshchuk *****
 
@@ -16,7 +16,7 @@ namespace Team2.Net.PageObjects
         private readonly By RestarauntSelectMenuFormInput = By.XPath("//div[contains(@class, 'selectMenu')]");
         private readonly By RestarauntTagPizzaFormInput = By.XPath("//*[contains(@data-value,'pizza')]");
         private readonly By RestarauntTagSushiFormInput = By.XPath("//*[contains(@data-value,'sushi')]");
-        private readonly By RestarauntTextDescriptionFormInput = By.XPath("//*[contains(@id,'select-tags')]");
+        private readonly By RestarauntTextDescriptionFormInput = By.XPath("//div[contains(@class,'public-DraftStyleDefault-block')]");
         private readonly By RestarauntEmptyPlace = By.XPath("//*[contains(@id,'menu-tags')]");
         private readonly By AddButton = By.XPath("//span[contains(text(),'Add')]");
 
@@ -25,6 +25,7 @@ namespace Team2.Net.PageObjects
         private readonly By StatusArchived = By.XPath(ChapmanPLC + "//following::*[span='ARCHIVED']");
         private readonly By StatusUnarchived = By.XPath(ChapmanPLC + "//following::*[span='NOT APPROVED']");
         private readonly By statusEdited = By.XPath("//p[contains(text(),'Restaurant was successfully updated')]");
+        private readonly By statusEditedObject = By.XPath("//td[contains(text(),'There is nothing to eat')]");
 
         //Restaraunts
         private static string ChapmanPLC = "//*[contains(h2,'Chapman PLC')]";
@@ -47,16 +48,22 @@ namespace Team2.Net.PageObjects
         private readonly By Submit = By.XPath("//button[contains(@type,'submit')]");
         private readonly By MenuesButton = By.XPath("//span[contains(text(),'Menues')]");
         private readonly By CommonButton = By.XPath("//span[contains(text(),'Common')]");
-        private readonly By ImageMenuButton = By.XPath("//span[contains(text(),'Image Menu')]");
+        private readonly By ImageMenuButton = By.XPath("//input[contains(@value,'image')]//ancestor::span");
         private readonly By CreateMenuButton = By.XPath("//span[contains(text(),'Create menu')]");
 
-        private readonly By PumpkinSoup = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]");
-        private readonly By MenuDeleteButton = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[5]/td[8]/div/button[1]");
-        private readonly By MenuEditButton = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]/td[8]/div/button[2]");
-        private readonly By PumpkinSoupEditText = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]/td[5]/div/div/textarea");
-        private readonly By PumpkinSoupSaveButton = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[6]/td[1]/button");
+        private readonly By NotSimpleImageButton = By.XPath("//span[contains(text(),'Not simple')]");
+        private readonly By SimpleListButton = By.XPath("//span[contains(text(),'Simple')]");
 
-        private readonly By PersianLamb = By.XPath("/html/body/div/div/main/div/div[2]/table/tbody[2]/tr[5]");
+        // Select waiter
+        private static string PumpkinSoupName = "//td[contains(text(),'Pumpkin soup')]";
+        private readonly By PumpkinSoupCheck = By.XPath("//td[contains(text(),'Pumpkin soup')]");
+        private readonly By DeletePumpkinSoup = By.XPath(PumpkinSoupName + "//following::*[local-name()='svg']/*[local-name()='path' and contains(@d,'M6 19c0')]//ancestor::button");
+
+        private static string PersianLambName = "//td[contains(text(),'Winter root mash with buttery crumbs')]";
+        private readonly By PersianLambCheck = By.XPath("//td[contains(text(),'Winter root mash with buttery crumbs')]");
+        private readonly By PersianLambEditButton = By.XPath(PersianLambName + "//following::*[local-name()='svg']/*[local-name()='path' and contains(@d,'M3 17.25')]//ancestor::button");
+        private readonly By PersianLambEditText = By.XPath("//textarea[contains(text(),'Winter root mash with buttery crumbs')]//following::textarea[1]");
+        private readonly By PersianLambSaveButton = By.XPath("//tr[contains(textarea,'')]//following::*[local-name()='svg']/*[local-name()='path' and contains(@d,'M17 3H5c')]//ancestor::button");
 
         //Archive / unarchive
         private readonly By ArchiveButton = By.XPath("//*[span='Archive']");
@@ -77,7 +84,7 @@ namespace Team2.Net.PageObjects
 
         private readonly By NameMenuFormInput = By.XPath("//input[@name='menuName']");
 
-        private readonly By ImageButton = By.XPath("/html/body/div/div/main/div/form/div/div[1]/div/div/div/div/div/div[3]/div/div/label[2]");
+        private readonly By ImageButton = By.XPath("//span[contains(@class,'colorPrimary')]");
         private readonly By SelectPhoto = By.XPath("//*[span='Select File']");
 
         private readonly By NextButton = By.XPath("//*[span='Next']");
@@ -86,8 +93,8 @@ namespace Team2.Net.PageObjects
 
         private readonly By SelectPhotoList = By.XPath("//div[contains(@class,'imgInput')]");
 
-
-        // private readonly By Add_Button = By.XPath("//*/div/main/div/form/div/div[3]/div/div/div/div/div/div[2]/div/div[2]/table/tbody[1]/tr/td[1]/button/span[2]");
+        //private readonly By SelectPhotoList = By.XPath("//div[contains(@class,'imgInput')]");
+       // private readonly By SelectPhotoList = By.XPath("//div[contains(@class,'imgInput')]");
 
         // ***** Locators by Bohdan Oleksiichuk *****
 

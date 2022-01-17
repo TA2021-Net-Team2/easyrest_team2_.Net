@@ -11,7 +11,9 @@ namespace Team2.Net.PageObjects
         public ClientPanel(IWebDriver webDriver)
         {
             _webDriver = webDriver;
+
         }
+        
         public RestaurantsList OpenWatchMenu()
         {
             SeleniumWaiters.WaitElement(_webDriver, WatchMenu);

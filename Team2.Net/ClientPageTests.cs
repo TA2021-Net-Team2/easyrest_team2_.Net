@@ -48,7 +48,6 @@ namespace Team2.Net
 		{
 			_clientPanel.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
-            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
             restaurantMenu.CoctailAddToCart();
             Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
         }
@@ -57,7 +56,6 @@ namespace Team2.Net
 		{
             _clientPanel.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
-            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
             restaurantMenu.SuccessOrderButton();
             Assert.AreEqual("Order status changed to Waiting for confirm", restaurantMenu.FindSuccessButtonInWindow());
         }
@@ -66,8 +64,10 @@ namespace Team2.Net
 		{
             _clientPanel.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
-            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
             restaurantMenu.CancelOrderButton();
+            Assert.False(restaurantMenu.GetLocatorForm());
+
+
         }
         [Test]
         public void RemoveItemFromCartTest()
@@ -81,19 +81,18 @@ namespace Team2.Net
 		{
             _clientPanel.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
-            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
             restaurantMenu.RemoveOrderButton();
             Assert.AreEqual("Item was removed", restaurantMenu.FindSuccessRemovingButton());
         }
-        [Test]
+        /* [Test]
         public void ChangeDeliveryDayTest()
-		{
-            _clientPanel.OpenWatchMenu();
-            restaurantMenu.BakeryAddToCart();
-            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
-            restaurantMenu.DatePickerButton();
-            SeleniumWaiters.WaitSomeInterval(3);
-        }
+         {
+             _clientPanel.OpenWatchMenu();
+             restaurantMenu.BakeryAddToCart();
+             Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
+             restaurantMenu.DatePickerButton();
+             SeleniumWaiters.WaitSomeInterval(3);
+         } */ //In progress
 
     }
 }

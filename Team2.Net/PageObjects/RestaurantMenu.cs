@@ -18,7 +18,10 @@ namespace Team2.Net.PageObjects
             _webDriver = webDriver;
             
         }
-
+        public bool GetLocatorForm()
+        {
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, OrderForm);
+        }
         public RestaurantMenu CoctailAddToCart()
         {
             SeleniumWaiters.WaitElement(_webDriver, CoctailMenuInput); 

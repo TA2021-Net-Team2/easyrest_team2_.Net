@@ -35,7 +35,8 @@ namespace Team2.Net.PageObjects
         private readonly By DatePickerButtonLabel = By.XPath("//label[text()= 'Date picker']");
         private readonly By YearPicker = By.XPath(DatePickerModalWindow + "//h6[contains(@class, 'subtitle')]");
 		private readonly By PickYear = By.XPath(DatePickerModalWindow + "//div[contains(text(),'2022')]");
-        private readonly By ScrollMonth = By.XPath("//button[@class='MuiButtonBase-root-106 MuiIconButton-root-262']");
+		private readonly By ScrollMonth = By.XPath("//button[@class='MuiButtonBase-root-106 MuiIconButton-root-262']");
+        private readonly By OrderForm = By.XPath("//div[@role= 'document']");
         //private readonly By DatePickerYear = By.XPath(DatePickerModalWindow + "//h6[contains(@class, 'subtitle')]");
         //private readonly By DatePickerSelectYear = By.XPath(DatePickerModalWindow + "//div[contains(text(),'1970')]");
         //private readonly By DatePickerOkButton = By.XPath(DatePickerModalWindow + "//span[contains(text(),'OK')]");

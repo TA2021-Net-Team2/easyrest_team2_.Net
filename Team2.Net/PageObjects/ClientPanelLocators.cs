@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -37,11 +37,5 @@ namespace Team2.Net.PageObjects
         private readonly By _declinedOrderButton = By.XPath("//p[contains (text(), 'Order declined')]");
 
         private readonly By _identificateSelected = By.XPath("//a[contains(@class, 'selected')]");
-
-        
-
-
-
-
     }
 }

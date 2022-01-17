@@ -23,6 +23,13 @@ namespace Team2.Net.PageObjects
 
             return new RestaurantsList(_webDriver);
         }
+      
+        public RestaurantsList OpenWatchMenu()
+        {
+            SeleniumWaiters.WaitElement(_webDriver, WatchMenu);
+            _webDriver.FindElement(WatchMenu).Click();
+            return new RestaurantsList(_webDriver);
+        }
 
         public RestaurantsList RedirectToPersonalInfo()
         {
@@ -32,7 +39,6 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, avatarMyProfileButton);
             _webDriver.FindElement(avatarMyProfileButton).Click();
             SeleniumWaiters.WaitSomeInterval(1);
-            return new RestaurantsList(_webDriver);
         }
     }
 }

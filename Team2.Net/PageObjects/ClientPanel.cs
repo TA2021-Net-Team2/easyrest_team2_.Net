@@ -1,7 +1,4 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 using System.Threading;
 using Team2.Net.Utilities;
 
@@ -183,8 +180,7 @@ namespace Team2.Net.PageObjects
 
             return new ClientPanel(_webDriver);
         }
-
-
+      
         public ClientPanel MakeDeclinedFromWaiting()
         {
             SeleniumWaiters.WaitElement(_webDriver, _tabWaitingForConfirm);
@@ -200,12 +196,6 @@ namespace Team2.Net.PageObjects
 
             return new ClientPanel(_webDriver);
         }
-
-        
-
-
-
-
     }
 
 }

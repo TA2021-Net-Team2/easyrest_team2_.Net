@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System.Threading;
 using Team2.Net;
@@ -11,8 +11,11 @@ namespace Team2.Net
         private const string StartLoginClient = "katherinebrennan@test.com";
         private const string PasswordClient = "1111";
 
+
         private ClientPanel _clientPanel;
+        private RestaurantMenu restaurantMenu;
         private RestaurantsList _restaurantsList;
+
 
         [SetUp]
         public override void Setup()
@@ -22,6 +25,7 @@ namespace Team2.Net
             ClientLogin();
             _clientPanel = new ClientPanel(_webDriver);
             _restaurantsList = new RestaurantsList(_webDriver);
+            restaurantMenu = new RestaurantMenu(_webDriver);
         }
 
         private void ClientLogin()
@@ -120,16 +124,67 @@ namespace Team2.Net
         }
 
         [Test]
+        public void AddingMoreThanOneItemInProductTest()
+        {
+            _clientPanel.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCart();
+            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
+        }
+        [Test]
         public void MakeDeclinedFromWaitingTest()  // 112
         {
             MyCurrentOrdersListTest();
             _clientPanel.MakeDeclinedFromWaiting();
             Assert.AreEqual("Order declined", _clientPanel.IdentificateDeclinedFromWaiting());
-
         }
 
-
-
-
+        [Test]
+        public void AddMoreThanOneItemDifferentProductTest()
+		{
+			_clientPanel.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCart();
+            restaurantMenu.CoctailAddToCart();
+            Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
+        }
+        [Test]
+        public void SubmitOrderTest()
+		{
+            _clientPanel.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCart();
+            restaurantMenu.SuccessOrderButton();
+            Assert.AreEqual("Order status changed to Waiting for confirm", restaurantMenu.FindSuccessButtonInWindow());
+        }
+        [Test]
+        public void CancelOrderTest()
+		{
+            _clientPanel.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCart();
+            restaurantMenu.CancelOrderButton();
+            Assert.False(restaurantMenu.GetLocatorForm());
+        }
+        [Test]
+        public void RemoveItemFromCartTest()
+		{
+            _clientPanel.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCartThenRemove();
+            Assert.AreEqual("Item was removed", restaurantMenu.FindSuccessRemovingButton());
+        }
+        [Test]
+        public void RemoveItemFromPreviewTest()
+		{
+            _clientPanel.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCart();
+            restaurantMenu.RemoveOrderButton();
+            Assert.AreEqual("Item was removed", restaurantMenu.FindSuccessRemovingButton());
+        }
+        /* [Test]
+        public void ChangeDeliveryDayTest()
+         {
+             _clientPanel.OpenWatchMenu();
+             restaurantMenu.BakeryAddToCart();
+             Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
+             restaurantMenu.DatePickerButton();
+             SeleniumWaiters.WaitSomeInterval(3);
+         } */ //In progress
     }
 }

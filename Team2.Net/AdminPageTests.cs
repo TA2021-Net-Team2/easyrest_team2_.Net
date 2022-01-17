@@ -32,13 +32,13 @@ namespace Team2.Net
         }
 
         [Test]
-        public void _AdminLoginTest()
+        public void Test401_AdminLogin()
         {
             Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]
-        public void UserLockTest()
+        public void Test402_UserLock()
         {
             _adminPanel.LockFirstUser();
 
@@ -46,7 +46,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void UserUnlockTest()
+        public void Test403_UserUnlock()
         {
             _adminPanel.UnlockFirstUser();
 
@@ -54,7 +54,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void OwnerLockTest()
+        public void Test404_OwnerLock()
         {
             _adminPanel.LockOwner();
 
@@ -62,7 +62,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void OwnerUnlockTest()
+        public void Test405_OwnerUnlock()
         {
             _adminPanel.UnlockOwner();
 
@@ -70,7 +70,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void ModeratorLockTest()
+        public void Test406_ModeratorLock()
         {
             _adminPanel.LockModerator();
 
@@ -78,7 +78,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void ModeratorUnlockTest()
+        public void Test407_ModeratorUnlock()
         {
             _adminPanel.UnlockModerator();
 
@@ -86,7 +86,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void AddModeratorTest()
+        public void Test408_AddModerator()
         {
             _adminPanel.AddModerator();
 

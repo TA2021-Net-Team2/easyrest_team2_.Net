@@ -12,6 +12,7 @@ namespace Team2.Net
         private const string PasswordOwner = "1111";
 
         private MyRestaurants _myRestaurants;
+        private BasePage _basePage;
 
         [SetUp]
         public override void Setup()
@@ -20,6 +21,7 @@ namespace Team2.Net
 
             OwnerLogin();
             _myRestaurants = new MyRestaurants(_webDriver);
+            _basePage = new BasePage(_webDriver);
         }
 
         private void OwnerLogin()
@@ -30,10 +32,16 @@ namespace Team2.Net
                 .Login(StartLoginOwner, PasswordOwner);
         }
 
+        [Test]
+        public void Test201_OwnerLogin()
+        {
+            Assert.True(_basePage.IsAvatarVisible());
+        }
+
         // Owner tests Meleshchuk
 
         [Test]
-        public void CreateOwnRestaurantTest()
+        public void Test202_CreateOwnRestaurant()
         {
             string restarauntName = "Matsuri";
             string restarauntAddress = "Village 8 street 999";
@@ -45,57 +53,65 @@ namespace Team2.Net
 
             Assert.AreEqual("Restaurant was successfully created", _myRestaurants.GetActivityStatusRestaraunt());
         }
+
         [Test]
-        public void ArchiveRestaurantTest()
+        public void Test203_ArchiveRestaurant()
         {
             _myRestaurants.ArchiveRestaraunt();
 
             Assert.AreEqual("ARCHIVED", _myRestaurants.GetArchiveStatus());
         }
+
         [Test]
-        public void UnarchiveRestaurantTest()
+        public void Test204_UnarchiveRestaurant()
         {
             _myRestaurants.UnrchiveRestaraunt();
 
             Assert.AreEqual("NOT APPROVED", _myRestaurants.GetUnarchiveStatus());
         }
+
         [Test]
-        public void EditRestaurantInformationTest()
+        public void Test205_EditRestaurantInformation()
         {
             _myRestaurants.EditRestarauntInformation();
 
             Assert.AreEqual("Restaurant was successfully updated", _myRestaurants.GetEditStatusRestaraunt());
         }
+
         [Test]
-        public void EditObjectToMenuTest()
+        public void Test206_EditObjectToMenu()
         {
             _myRestaurants.EditObjectToMenu();
 
             Assert.AreEqual("There is nothing to eat", _myRestaurants.GetEditedObjectStatus());
         }
+
         [Test]
-        public void AddNewObjectToMenuTest()
+        public void Test207_AddNewObjectToMenu()
         {
             _myRestaurants.AddNewObjectToMenu();
 
             //Assert.AreEqual();
         }
+
         [Test]
-        public void DeleteObjectToMenuTest()
+        public void Test208_DeleteObjectToMenu()
         {
             _myRestaurants.DeleteObjectToMenu();
 
             Assert.False(_myRestaurants.GetDeleteObjectStatus());
         }
+
         [Test]
-        public void CreateNewListMenuTest()
+        public void Test209_CreateNewListMenu()
         {
             _myRestaurants.CreateNewListMenu();
 
             Assert.True(_myRestaurants.GetCreateNewListMenuStatus());
         }
+
         [Test]
-        public void CreateNewImageListMenuTest()
+        public void Test210_CreateNewImageListMenu()
         {
             _myRestaurants.CreateNewImageListMenu();
 
@@ -103,8 +119,9 @@ namespace Team2.Net
         }
 
         // ****** Owner auto tests PART 2 by Bohdan Oleksiichuk ******
+
         [Test]
-        public void MakeMenuPrimaryTest()
+        public void Test211_MakeMenuPrimary()
         {
             _myRestaurants.MakeMenuPrimary();
 
@@ -112,7 +129,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void MakeMenuNotPrimaryTest()
+        public void Test212_MakeMenuNotPrimary()
         {
             _myRestaurants.MakeMenuNotPrimary();
 
@@ -120,7 +137,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void AddWaiterTest()
+        public void Test213_AddWaiter()
         {
             _myRestaurants.AddWaiter();
 
@@ -128,7 +145,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void DeleteWaiterTest()
+        public void Test214_DeleteWaiter()
         {
             _myRestaurants.DeleteWaiter();
 
@@ -136,7 +153,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void AddAdministratorTest()
+        public void Test215_AddAdministrator()
         {
             _myRestaurants.AddAdministrator();
 
@@ -144,7 +161,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void DeleteAdministratorTest()
+        public void Test216_DeleteAdministrator()
         {
             _myRestaurants.DeleteAdministrator();
 

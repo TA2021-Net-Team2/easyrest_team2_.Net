@@ -12,7 +12,8 @@ namespace Team2.Net
         private const string PasswordAdministrator = "1";
 
         private AdministratorPanel _administratorPanel;
-        
+        private BasePage _basePage;
+
         [SetUp]
         public override void Setup()
         {
@@ -20,6 +21,7 @@ namespace Team2.Net
 
             AdministratorLogin();
             _administratorPanel = new AdministratorPanel(_webDriver);
+            _basePage = new BasePage(_webDriver);
         }
 
         private void AdministratorLogin()
@@ -28,6 +30,12 @@ namespace Team2.Net
             page
                 .SignIn()
                 .Login(StartLoginAdministrator, PasswordAdministrator);
+        }
+
+        [Test]
+        public void Test501_AdministratorLogin()
+        {
+            Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]

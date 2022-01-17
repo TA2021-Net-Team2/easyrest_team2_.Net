@@ -13,6 +13,7 @@ namespace Team2.Net
 
         //Створи свій пейдж
         private ModeratorPanel _moderatorPanel;
+        private BasePage _basePage;
 
         [SetUp]
         public override void Setup()
@@ -21,6 +22,7 @@ namespace Team2.Net
 
             ModeratorLogin();
             _moderatorPanel = new ModeratorPanel(_webDriver);
+            _basePage = new BasePage(_webDriver);
         }
 
         private void ModeratorLogin() //301
@@ -32,66 +34,88 @@ namespace Team2.Net
         }
 
         [Test]
-        public void ShowAllApruvedRestaurantsTest() //303
+        public void Test301_ModeratorLogin()
         {
-
-            _moderatorPanel.ShowAllApruvedRestaurants();
-            Assert.AreEqual("Disapproved", _moderatorPanel.IdentificateDisapproved());
-
+            Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]
-        public void ShowAllUnapprovedRestaurantsTest() //304
+        public void Test303_ShowAllApruvedRestaurants() //303
+        {
+            _moderatorPanel.ShowAllApruvedRestaurants();
+
+            Assert.AreEqual("Disapproved", _moderatorPanel.IdentificateDisapproved());
+        }
+
+        [Test]
+        public void Test304_ShowAllUnapprovedRestaurants() //304
         {
             _moderatorPanel.ShowAllUnapprovedRestaurants();
+
             Assert.AreEqual("Approved", _moderatorPanel.IdentificateApproved());
         }
+
         [Test]
-        public void DisapproveRestoranTest() //305
+        public void Test305_DisapproveRestoran() //305
         {
             _moderatorPanel.DisapproveRestoran();
+
             Assert.AreEqual("Disapproved", _moderatorPanel.IdentificateDisapproved());
         }
+
         [Test]
-        public void DisapproveArchivedRestourants() //306
+        public void Test306_DisapproveArchivedRestourants() //306
         {
             _moderatorPanel.DisapproveArchivedRestourants();
+
             Assert.AreEqual("Approved", _moderatorPanel.IdentificateApproved());
         }
+
         [Test]
-        public void ShowAllUsersTest() //307
+        public void Test307_ShowAllUsers() //307
         {
             _moderatorPanel.ShowAllUsers();
+
             Assert.AreEqual("Users", _moderatorPanel.IdentificateUsers());
         }
+
         [Test]
-        public void ShowAllOwnersTest() //308
+        public void Test308_ShowAllOwners() //308
         {
             _moderatorPanel.ShowAllOwners();
+
             Assert.AreEqual("Owners", _moderatorPanel.IdentificateOwners());
         }
+
         [Test]
-        public void LockUsersTest() //309
+        public void Test309_LockUsers() //309
         {
             _moderatorPanel.LockUser();
+
             Assert.AreEqual("success", _moderatorPanel.IdentificateSuccess());
         }
+
         [Test]
-        public void LockOwnerTest() //310
+        public void Test310_LockOwner() //310
         {
             _moderatorPanel.LockOwner();
+
             Assert.AreEqual("success", _moderatorPanel.IdentificateSuccess());
         }
+
         [Test]
-        public void UnLockUserTest() //311
+        public void Test311_UnLockUser() //311
         {
             _moderatorPanel.UnLockUser();
+
             Assert.AreEqual("success", _moderatorPanel.IdentificateSuccess());
         }
+
         [Test]
-        public void UnLockOwnerTest() //312
+        public void Test312_UnLockOwner() //312
         {
             _moderatorPanel.UnLockOwner();
+
             Assert.AreEqual("success", _moderatorPanel.IdentificateSuccess());
         }
     }

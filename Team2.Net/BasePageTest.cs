@@ -25,7 +25,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void RegistrationTest()
+        public void Test409_Registration()
         {
             _basePage
                 .Registration()
@@ -35,7 +35,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void CreateOrderUnauthorizedUserTest()
+        public void Test410_CreateOrderUnauthorizedUser()
         {
             _basePage.OpenRestaurantList();
             restaurantsListPage.CreateOrder();
@@ -45,7 +45,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void LogInFromGoogleAccountTest()
+        public void Test411_LogInFromGoogleAccount()
         {
             _basePage.SignIn();
             autorizationPage.SignInFromGoogleAccount();

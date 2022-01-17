@@ -31,14 +31,14 @@ namespace Team2.Net.PageObjects
 
         public bool GetWaiterAssignedPanelBack()
         {
-            return ExplicitWaiters.TryForElementDisplayed(_webDriver, Second_ArrowUp);
+            return ExplicitWaiters.TryForElementDisplayed(_webDriver, WaitersCloseChecker);
         }
 
         public AdministratorPanel Acception_func()
         {
-            SeleniumWaiters.WaitElement(_webDriver, ArrowDown);
-            //ExplicitWaiters.WaitElementDisplayed(_webDriver, Arrow_Down);
-            _webDriver.FindElement(ArrowDown).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            //ExplicitWaiters.WaitElementDisplayed(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, ActiveStatus);
             _webDriver.FindElement(ActiveStatus).Click();
@@ -54,14 +54,16 @@ namespace Team2.Net.PageObjects
             //ExplicitWaiters.WaitElementDisplayed(_webDriver, Arrow_Down);
             _webDriver.FindElement(Accepted_tab).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ArrowDown);
-            _webDriver.FindElement(ArrowDown).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, Radiobutton);
             _webDriver.FindElement(Radiobutton).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, Assign_waiter);
             _webDriver.FindElement(Assign_waiter).Click();
+
+            SeleniumWaiters.WaitElement(_webDriver, Check_assign);
 
             return new AdministratorPanel(_webDriver);
         }
@@ -71,8 +73,8 @@ namespace Team2.Net.PageObjects
             //ExplicitWaiters.WaitElementDisplayed(_webDriver, Arrow_Down);
             _webDriver.FindElement(Accepted_tab).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ArrowDown);
-            _webDriver.FindElement(ArrowDown).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
             SeleniumWaiters.WaitElement(_webDriver, Assign_waiter);
             _webDriver.FindElement(Assign_waiter).Click();
@@ -88,11 +90,11 @@ namespace Team2.Net.PageObjects
             //ExplicitWaiters.WaitElementDisplayed(_webDriver, Arrow_Down);
             _webDriver.FindElement(Assign_waiter_tab).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ArrowDown);
-            _webDriver.FindElement(ArrowDown).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ArrowUp);
-            _webDriver.FindElement(ArrowUp).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
             return new AdministratorPanel(_webDriver);
         }
@@ -103,17 +105,17 @@ namespace Team2.Net.PageObjects
             //ExplicitWaiters.WaitElementDisplayed(_webDriver, Arrow_Down);
             _webDriver.FindElement(Waiter_tab).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ArrowDown);
-            _webDriver.FindElement(ArrowDown).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, Second_ArrowDown);
-            _webDriver.FindElement(Second_ArrowDown).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Second_Arrow);
+            _webDriver.FindElement(Second_Arrow).Click();
             
-            SeleniumWaiters.WaitElement(_webDriver, Second_ArrowUp);
-            _webDriver.FindElement(Second_ArrowUp).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Second_Arrow);
+            _webDriver.FindElement(Second_Arrow).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, ArrowUp);
-            _webDriver.FindElement(ArrowUp).Click();
+            SeleniumWaiters.WaitElement(_webDriver, Arrow);
+            _webDriver.FindElement(Arrow).Click();
 
             return new AdministratorPanel(_webDriver);
         }

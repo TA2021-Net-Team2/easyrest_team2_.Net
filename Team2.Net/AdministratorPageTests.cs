@@ -47,7 +47,7 @@ namespace Team2.Net
         [Test]
         public void Test504_Assign_waiter_func()
         {
-            _administratorPanel.Assign_waiter_func();
+            _administratorPanel.Watch_info_waiter();
             Assert.False(_administratorPanel.GetWaiterAssignedPanelBack());
         }
 

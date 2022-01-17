@@ -11,16 +11,15 @@ namespace Team2.Net
         private const string StartLoginAdministrator = "eringonzales@test.com";
         private const string PasswordAdministrator = "1";
 
-        //Створи свій пейдж
-        //private AdministratorPanel _administratorPanel;
-
+        private AdministratorPanel _administratorPanel;
+        
         [SetUp]
         public override void Setup()
         {
             base.Setup();
 
             AdministratorLogin();
-            //_administratorPanel = new AdministratorPanel(_webDriver);
+            _administratorPanel = new AdministratorPanel(_webDriver);
         }
 
         private void AdministratorLogin()
@@ -32,9 +31,38 @@ namespace Team2.Net
         }
 
         [Test]
-        public void YourTest()
+        public void Test502_Acception_func()
         {
+            _administratorPanel.Acception_func();
+            Assert.True(_administratorPanel.GetAcceptionStatusForFirstUser());
+        }
 
+        [Test]
+        public void Test503_Assign_waiter_func()
+        {
+            _administratorPanel.Assign_waiter_func();
+            Assert.True(_administratorPanel.GetAssignStatusForFirstUser());
+        }
+
+        [Test]
+        public void Test504_Assign_waiter_func()
+        {
+            _administratorPanel.Watch_info_waiter();
+            Assert.False(_administratorPanel.GetWaiterAssignedPanelBack());
+        }
+
+        [Test]
+        public void Test505_Waiters_tab_info()
+        {
+            _administratorPanel.Waiters_tab_info();
+            Assert.False(_administratorPanel.GetWaiterAssignedPanelBack());
+        }
+
+        [Test]
+        public void Test506_Error()
+        {
+            _administratorPanel.Error();
+            Assert.AreEqual("Pls pick waiter", _administratorPanel.GetCheckErrorStatusForFirstUser());
         }
     }
 }

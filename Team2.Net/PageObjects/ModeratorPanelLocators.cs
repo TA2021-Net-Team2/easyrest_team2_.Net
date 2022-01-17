@@ -47,7 +47,7 @@ namespace Team2.Net.PageObjects
         private readonly By _lockButton = By.XPath("//button[contains(@class,  'colorPrimary')][1]");
         private readonly By _successAllert = By.XPath("//p[contains(text(),  'success')]");
 
-        private readonly By _allOwnersLockButton  = By.XPath("//span[text()= //button[contains(@class,  'colorPrimary')][1]'Owners']");
+        private readonly By _allOwnersLockButton  = By.XPath("//span[text()='Owners']");
         //private readonly By _lockOwnerButton = By.XPath("//button[contains(@class,  'colorPrimary')][1]");
         private readonly By _successAllertOwner = By.XPath("//*[local-name()='svg']/*[local-name()='path' and contains(@d,'M12 17c1')]//ancestor::button");
 

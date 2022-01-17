@@ -21,6 +21,7 @@ namespace Team2.Net
 
             WaiterLogin();
             _waiterPanel = new WaiterPanel(_webDriver);
+            _basePage = new BasePage(_webDriver);
         }
 
         private void WaiterLogin()

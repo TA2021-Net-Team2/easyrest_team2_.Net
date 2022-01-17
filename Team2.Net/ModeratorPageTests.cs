@@ -96,17 +96,17 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test310_LockOwner() //310
+        public void Test310_UnLockUser() //311
         {
-            _moderatorPanel.LockOwner();
+            _moderatorPanel.UnLockUser();
 
             Assert.AreEqual("success", _moderatorPanel.IdentificateSuccess());
         }
 
         [Test]
-        public void Test311_UnLockUser() //311
+        public void Test311_LockOwner() //310
         {
-            _moderatorPanel.UnLockUser();
+            _moderatorPanel.LockOwner();
 
             Assert.AreEqual("success", _moderatorPanel.IdentificateSuccess());
         }

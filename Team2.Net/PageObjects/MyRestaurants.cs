@@ -397,8 +397,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, MenuesButton);
             _webDriver.FindElement(MenuesButton).Click();
 
-            SeleniumWaiters.WaitElement(_webDriver, FirstMenuButton);
-            _webDriver.FindElement(FirstMenuButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, WithoutPrimaryMenuButton);
+            _webDriver.FindElement(WithoutPrimaryMenuButton).Click();
  
             SeleniumWaiters.WaitElement(_webDriver, AdditionalOptionsButton);
             _webDriver.FindElement(AdditionalOptionsButton).Click();
@@ -423,8 +423,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, MenuesButton);
             _webDriver.FindElement(MenuesButton).Click();
             
-            SeleniumWaiters.WaitElement(_webDriver, FirstMenuButton);
-            _webDriver.FindElement(FirstMenuButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, WithPrimaryMenuButton);
+            _webDriver.FindElement(WithPrimaryMenuButton).Click();
             
             SeleniumWaiters.WaitElement(_webDriver, AdditionalOptionsButton);
             _webDriver.FindElement(AdditionalOptionsButton).Click();

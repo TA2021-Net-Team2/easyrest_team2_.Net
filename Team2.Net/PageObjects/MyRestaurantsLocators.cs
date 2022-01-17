@@ -106,7 +106,9 @@ namespace Team2.Net.PageObjects
         // Manage buttons
         // Menues:
 
-        private readonly By FirstMenuButton = By.XPath("//a[contains(@class, 'DrawerMenu-nested')][1]");
+        private readonly By WithPrimaryMenuButton = By.XPath("//*[local-name()='svg']/*[local-name()='path' and contains(@d,'M12 17')]//ancestor::a");
+        private readonly By WithoutPrimaryMenuButton = By.XPath("//*[local-name()='svg']/*[local-name()='path' and contains(@d,'M22 9.24l')]//ancestor::a");
+
         private readonly By AdditionalOptionsButton = By.XPath("//button[contains(@aria-label,'Action')]");
 
         // Menues:

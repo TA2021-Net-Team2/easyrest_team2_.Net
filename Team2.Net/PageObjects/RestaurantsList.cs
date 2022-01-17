@@ -39,6 +39,8 @@ namespace Team2.Net.PageObjects
             SeleniumWaiters.WaitElement(_webDriver, avatarMyProfileButton);
             _webDriver.FindElement(avatarMyProfileButton).Click();
             SeleniumWaiters.WaitSomeInterval(1);
+
+            return new RestaurantsList(_webDriver);
         }
     }
 }

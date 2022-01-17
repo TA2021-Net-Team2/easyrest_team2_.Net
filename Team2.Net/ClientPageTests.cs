@@ -126,7 +126,7 @@ namespace Team2.Net
         [Test]
         public void AddingMoreThanOneItemInProductTest()
         {
-            _clientPanel.OpenWatchMenu();
+            _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
         }
@@ -141,7 +141,7 @@ namespace Team2.Net
         [Test]
         public void AddMoreThanOneItemDifferentProductTest()
 		{
-			_clientPanel.OpenWatchMenu();
+            _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.CoctailAddToCart();
             Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
@@ -149,7 +149,7 @@ namespace Team2.Net
         [Test]
         public void SubmitOrderTest()
 		{
-            _clientPanel.OpenWatchMenu();
+            _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.SuccessOrderButton();
             Assert.AreEqual("Order status changed to Waiting for confirm", restaurantMenu.FindSuccessButtonInWindow());
@@ -157,7 +157,7 @@ namespace Team2.Net
         [Test]
         public void CancelOrderTest()
 		{
-            _clientPanel.OpenWatchMenu();
+            _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.CancelOrderButton();
             Assert.False(restaurantMenu.GetLocatorForm());
@@ -165,14 +165,14 @@ namespace Team2.Net
         [Test]
         public void RemoveItemFromCartTest()
 		{
-            _clientPanel.OpenWatchMenu();
+            _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCartThenRemove();
             Assert.AreEqual("Item was removed", restaurantMenu.FindSuccessRemovingButton());
         }
         [Test]
         public void RemoveItemFromPreviewTest()
 		{
-            _clientPanel.OpenWatchMenu();
+            _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.RemoveOrderButton();
             Assert.AreEqual("Item was removed", restaurantMenu.FindSuccessRemovingButton());

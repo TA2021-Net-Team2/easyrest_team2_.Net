@@ -77,6 +77,7 @@ namespace Team2.Net
             Assert.That(locationResponse.Data[0].Name, Is.EqualTo("Johnson PLC"));
         }
 
+        // TEST METHOD POST 
         [TestCase("steveadmin@test.com", "1", HttpStatusCode.OK, TestName = "Not found Non-name")]
         public void AutorizationTest(string email, string password, HttpStatusCode expectedHttpStatusCode)
         {

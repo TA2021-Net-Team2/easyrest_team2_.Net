@@ -33,41 +33,41 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test501_AdministratorLogin()
+        public void Test501_AdministratorLogin() // https://docs.google.com/spreadsheets/d/1ffSUVY0xBc8bmnmwUkEq01rlilnv7Mxl6TLeXR5bQb8/edit#gid=0
         {
             Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]
-        public void Test502_Acception_func()
+        public void Test502_Acception_func() // https://docs.google.com/spreadsheets/d/1ffSUVY0xBc8bmnmwUkEq01rlilnv7Mxl6TLeXR5bQb8/edit#gid=1073237504
         {
             _administratorPanel.Acception_func();
             Assert.True(_administratorPanel.GetAcceptionStatusForFirstUser());
         }
 
         [Test]
-        public void Test503_Assign_waiter_func()
+        public void Test503_Assign_waiter_func() // https://docs.google.com/spreadsheets/d/1ffSUVY0xBc8bmnmwUkEq01rlilnv7Mxl6TLeXR5bQb8/edit#gid=633920834
         {
             _administratorPanel.Assign_waiter_func();
             Assert.True(_administratorPanel.GetAssignStatusForFirstUser());
         }
 
         [Test]
-        public void Test504_Assign_waiter_func()
+        public void Test504_Assign_waiter_func() // https://docs.google.com/spreadsheets/d/1ffSUVY0xBc8bmnmwUkEq01rlilnv7Mxl6TLeXR5bQb8/edit#gid=837467035
         {
             _administratorPanel.Watch_info_waiter();
             Assert.False(_administratorPanel.GetWaiterAssignedPanelBack());
         }
 
         [Test]
-        public void Test505_Waiters_tab_info()
+        public void Test505_Waiters_tab_info() // https://docs.google.com/spreadsheets/d/1ffSUVY0xBc8bmnmwUkEq01rlilnv7Mxl6TLeXR5bQb8/edit#gid=1245154818
         {
             _administratorPanel.Waiters_tab_info();
             Assert.False(_administratorPanel.GetWaiterAssignedPanelBack());
         }
 
         [Test]
-        public void Test506_Error()
+        public void Test506_Error() // https://docs.google.com/spreadsheets/d/1ffSUVY0xBc8bmnmwUkEq01rlilnv7Mxl6TLeXR5bQb8/edit#gid=16071388
         {
             _administratorPanel.Error();
             Assert.AreEqual("Pls pick waiter", _administratorPanel.GetCheckErrorStatusForFirstUser());

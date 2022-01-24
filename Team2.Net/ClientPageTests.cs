@@ -56,13 +56,13 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test101_ClientLogin()
+        public void Test101_ClientLogin() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=0
         {
             Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]
-        public void Test103_AddingMoreThanOneItemInProduct()
+        public void Test103_AddingMoreThanOneItemInProduct() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=606467545
         {
             _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
@@ -71,8 +71,8 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test104_AddMoreThanOneItemDifferentProduct()
-		{
+        public void Test104_AddMoreThanOneItemDifferentProduct() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=608855160
+        {
             _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.CoctailAddToCart();
@@ -81,8 +81,8 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test105_SubmitOrder()
-		{
+        public void Test105_SubmitOrder() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1574150349
+        {
             _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.SuccessOrderButton();
@@ -91,8 +91,8 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test106_CancelOrder()
-		{
+        public void Test106_CancelOrder() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1024542359
+        {
             _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.CancelOrderButton();
@@ -101,8 +101,8 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test107_RemoveItemFromCart()
-		{
+        public void Test107_RemoveItemFromCart() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1634214018
+        {
             _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCartThenRemove();
 
@@ -110,8 +110,8 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test108_RemoveItemFromPreview()
-		{
+        public void Test108_RemoveItemFromPreview() // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1560135943
+        {
             _restaurantsList.OpenWatchMenu();
             restaurantMenu.BakeryAddToCart();
             restaurantMenu.RemoveOrderButton();
@@ -132,7 +132,7 @@ namespace Team2.Net
          } */
 
         [Test]
-        public void Test111_MakeDeleteFromDraft()  // 111
+        public void Test111_MakeDeleteFromDraft()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=381700871
         {
             MyCurrentOrdersListTest();
             _clientPanel.MakeDeleteFromDraft();
@@ -141,7 +141,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test112_MakeDeclinedFromWaiting()  // 112
+        public void Test112_MakeDeclinedFromWaiting()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=392363947
         {
             MyCurrentOrdersListTest();
             _clientPanel.MakeDeclinedFromWaiting();
@@ -149,7 +149,7 @@ namespace Team2.Net
             Assert.AreEqual("Order declined", _clientPanel.IdentificateDeclinedFromWaiting());
         }
         [Test]
-        public void Test113_MakeReorderFromHistory()  // 113
+        public void Test113_MakeReorderFromHistory()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1151572713
         {
             MyHistoryOrdersListTest();
             _clientPanel.MakeReorderFromHistory();
@@ -158,7 +158,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test114_MakeReorderFromDeclined()  // 114
+        public void Test114_MakeReorderFromDeclined()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=755782380
         {
             MyHistoryOrdersListTest();
             _clientPanel.MakeReorderFromDeclined();
@@ -167,7 +167,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test115_WatchAcceptedOrdersTab()  // 115
+        public void Test115_WatchAcceptedOrdersTab()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1379820078
         {
             MyCurrentOrdersListTest();
             _clientPanel.PressTabAssepted();
@@ -176,7 +176,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test116_WatchAssignedWaiterTab()  // 116
+        public void Test116_WatchAssignedWaiterTab()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=1318815748
         {
             MyCurrentOrdersListTest();
             _clientPanel.PressTabAssepted();
@@ -185,7 +185,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test117_WatchInProgressTab()  // 117
+        public void Test117_WatchInProgressTab()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=885437076
         {
             MyCurrentOrdersListTest();
             _clientPanel.PressInProgress();
@@ -194,7 +194,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test118_WatchRemovedOrders()  // 118
+        public void Test118_WatchRemovedOrders()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=550489601
         {
             MyHistoryOrdersListTest();
             _clientPanel.PressRemovedOrders();
@@ -203,7 +203,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test119_WatchFaildOrders()  // 119
+        public void Test119_WatchFaildOrders()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=291538558
         {
             MyHistoryOrdersListTest();
             _clientPanel.PressFaildOrders();

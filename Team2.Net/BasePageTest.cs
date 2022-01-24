@@ -25,7 +25,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test409_Registration()
+        public void Test409_Registration() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=212817552
         {
             _basePage
                 .Registration()
@@ -35,7 +35,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test410_CreateOrderUnauthorizedUser()
+        public void Test410_CreateOrderUnauthorizedUser() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=705429520
         {
             _basePage.OpenRestaurantList();
             restaurantsListPage.CreateOrder();
@@ -45,7 +45,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test411_LogInFromGoogleAccount()
+        public void Test411_LogInFromGoogleAccount() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1660078923
         {
             _basePage.SignIn();
             autorizationPage.SignInFromGoogleAccount();

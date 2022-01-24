@@ -76,5 +76,19 @@ namespace Team2.Net
             // Assert
             Assert.That(locationResponse.Data[0].Name, Is.EqualTo("Johnson PLC"));
         }
+
+        [TestCase("steveadmin@test.com", "1", HttpStatusCode.OK, TestName = "Not found Non-name")]
+        public void AutorizationTest(string email, string password, HttpStatusCode expectedHttpStatusCode)
+        {
+            // Arrange
+            RestClient client = new RestClient("http://localhost:6543/");
+            RestRequest request = new RestRequest("api/login", Method.POST);
+
+            // Act
+            IRestResponse response = client.Execute(request);
+
+            // Assert
+            Assert.That(response.StatusCode, Is.EqualTo(expectedHttpStatusCode));
+        }
     }
 }

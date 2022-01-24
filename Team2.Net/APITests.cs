@@ -24,6 +24,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             // Assert
+            // HttpStatusCode: 200 - good(OK), 404 - not found
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
@@ -38,6 +39,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             // assert
+            //Check type json
             Assert.That(response.ContentType, Is.EqualTo("application/json"));
         }
 

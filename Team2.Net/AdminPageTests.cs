@@ -32,13 +32,13 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test401_AdminLogin()
+        public void Test401_AdminLogin() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=932613514
         {
             Assert.True(_basePage.IsAvatarVisible());
         }
 
         [Test]
-        public void Test402_UserLock()
+        public void Test402_UserLock() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1331648278
         {
             _adminPanel.LockFirstUser();
 
@@ -46,7 +46,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test403_UserUnlock()
+        public void Test403_UserUnlock() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1032936101
         {
             _adminPanel.UnlockFirstUser();
 
@@ -54,7 +54,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test404_OwnerLock()
+        public void Test404_OwnerLock() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1645371598
         {
             _adminPanel.LockOwner();
 
@@ -62,7 +62,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test405_OwnerUnlock()
+        public void Test405_OwnerUnlock() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1750068393
         {
             _adminPanel.UnlockOwner();
 
@@ -70,7 +70,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test406_ModeratorLock()
+        public void Test406_ModeratorLock() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1074097320
         {
             _adminPanel.LockModerator();
 
@@ -78,7 +78,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test407_ModeratorUnlock()
+        public void Test407_ModeratorUnlock() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=29976917
         {
             _adminPanel.UnlockModerator();
 
@@ -86,7 +86,7 @@ namespace Team2.Net
         }
 
         [Test]
-        public void Test408_AddModerator()
+        public void Test408_AddModerator() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1552482350
         {
             _adminPanel.AddModerator();
 

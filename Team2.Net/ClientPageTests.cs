@@ -118,18 +118,17 @@ namespace Team2.Net
 
             Assert.AreEqual("Item was removed", restaurantMenu.FindSuccessRemovingButton());
         }
+        [Test]
+        public void Test109_ChangeDeliveryDayTest()
+        {
+            _restaurantsList.OpenWatchMenu();
+            restaurantMenu.BakeryAddToCart();
+            SeleniumWaiters.WaitSomeInterval(1);
+            restaurantMenu.DatePickerButton();
+            Assert.AreEqual("Book time selected", restaurantMenu.FindOKButton());
+            SeleniumWaiters.WaitSomeInterval(3);
+        }
 
-        // in progress
-
-        /* [Test]
-        public void ChangeDeliveryDayTest()
-         {
-             _clientPanel.OpenWatchMenu();
-             restaurantMenu.BakeryAddToCart();
-             Assert.AreEqual("Item was added", restaurantMenu.FindSuccessButton());
-             restaurantMenu.DatePickerButton();
-             SeleniumWaiters.WaitSomeInterval(3);
-         } */
 
         [Test]
         public void Test111_MakeDeleteFromDraft()  // https://docs.google.com/spreadsheets/d/1-DL9WQZBF4N6WUc0keOpIv_9qXJO18ZXtlK15-sxMvk/edit#gid=381700871

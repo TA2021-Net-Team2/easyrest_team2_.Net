@@ -6,5 +6,8 @@ namespace Team2.Net.DataEntities
     {
         [JsonProperty("name")]
         public string Name { get; set; }
+        public string id { get; set; }
+
+        public string Token { get; set; }
     }
 }

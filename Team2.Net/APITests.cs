@@ -91,5 +91,82 @@ namespace Team2.Net
             // Assert
             Assert.That(response.StatusCode, Is.EqualTo(expectedHttpStatusCode));
         }
+
+        //Made by Meleshchuk
+        public string OwnerLoginGetToken2()
+        {
+            var client = new RestClient("http://localhost:6543/api/login");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            var body = @"{" + "\n" +
+            @"    ""email"": ""earlmorrison@test.com"",
+            " + "\n" +
+            @"    ""password"": ""1111""
+            " + "\n" +
+            @"}";
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+
+            LoginInfo locationResponse =
+                new JsonDeserializer().
+                Deserialize<LoginInfo>(response);
+
+            string tkn = locationResponse.Data[0].Token;
+
+            Console.WriteLine(tkn);
+
+            return tkn;
+        }
+
+        //GET
+
+        [Test]
+        public void CategoriesTest()
+        {
+            RestClient client = new RestClient("http://localhost:6543/");
+            RestRequest request = new RestRequest("api/categories", Method.GET);
+
+            IRestResponse response = client.Execute(request);
+
+            CategoriesInfo locationResponse =
+                new JsonDeserializer().
+                Deserialize<CategoriesInfo>(response);
+
+            Assert.That(locationResponse.Data[1].Name, Is.EqualTo("Coctails"));
+        }
+
+        //POST
+
+        [Test]
+        public void CreateAdministratorTest()
+        {
+            string Token = OwnerLoginGetToken2();
+            var client = new RestClient("http://localhost:6543/api/user/5");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("x-auth-token", Token);
+            string body = @"{
+            " + "\n" +
+            @"    ""birth_date"": ""2022-02-05T09:33:47.640Z"",
+            " + "\n" +
+            @"    ""email"": ""asf547dghdg@test.com"",
+            " + "\n" +
+            @"    ""name"": ""Ahmed"",
+            " + "\n" +
+            @"    ""password"": ""1234567813"",
+            " + "\n" +
+            @"    ""phone_number"": ""12345678901"",
+            " + "\n" +
+            @"    ""restaurant_id"": ""2""
+            " + "\n" +
+            @"}";
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+        }
     }
 }

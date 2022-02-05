@@ -9,5 +9,8 @@ namespace Team2.Net.DataEntities
 
         [JsonProperty("token")]
         public string Token { get; set; }
+     
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }

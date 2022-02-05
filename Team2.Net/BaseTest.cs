@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NUnit.Allure.Core;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System.Threading;
 using Team2.Net;
@@ -6,6 +7,7 @@ using Team2.Net.PageObjects;
 
 namespace Team2.Net
 {
+    [AllureNUnit]
     public class BaseTest
     {
         protected IWebDriver _webDriver;

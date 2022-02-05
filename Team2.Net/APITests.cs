@@ -13,11 +13,12 @@ namespace Team2.Net
     [TestFixture]
     public class APITests
     {
+        RestClient client = new RestClient("http://localhost:6543/");
+
         [Test]
         public void StatusCodeTest()
         {
             // Arrange
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest("api/restaurant", Method.GET);
 
             // Action 
@@ -32,7 +33,6 @@ namespace Team2.Net
         public void ContentTypeTest()
         {
             // arrange
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest("api/restaurant", Method.GET);
 
             // act
@@ -48,7 +48,6 @@ namespace Team2.Net
         public void StatusCodeTest(string restId, HttpStatusCode expectedHttpStatusCode)
         {
             // Arrange
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest($"api/restaurant/{restId}", Method.GET);
 
             // Act
@@ -62,7 +61,6 @@ namespace Team2.Net
         public void RestaurantNameCorrectTest()
         {
             // Arrange
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest("api/restaurant/{restId}", Method.GET);
             request.AddUrlSegment("restId", 2);
 
@@ -95,7 +93,7 @@ namespace Team2.Net
         [Test]
         public void BadAuthWithWrongeEmail()
         {
-            var client = new RestClient("http://localhost:6543/api/login");
+            //var client = new RestClient("http://localhost:6543/api/login");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "text/plain");
 
@@ -347,7 +345,87 @@ namespace Team2.Net
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
-      // END
+        // END
 
+
+
+        // API autotests Yatsyna Denis
+        [Test]
+        public void AutorizationTest()
+        {
+            // Arrange
+            RestRequest request = new RestRequest("api/login", Method.POST);
+
+            request.AddParameter("application/json",
+                "{\"email\":\"steveadmin@test.com\",\"password\":\"1\"}",
+                ParameterType.RequestBody);
+            // Act
+            IRestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+            // Assert
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+        }
+
+        [Test]
+        public void Order_by_id_check()
+        {
+            RestRequest request = new RestRequest("", Method.POST);
+
+            request.AddParameter("application/json",
+               "{\"email\":\"steveadmin@test.com\",\"password\":\"1\"}",
+               ParameterType.RequestBody);
+        }
+
+        // END tests;
+
+        // API tests by Oleksandr 
+
+        [Test]
+        public void AddNewRestourant()
+
+        {
+            var client = new RestClient("http://localhost:6543/api/user_restaurants");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("x-auth-token", "lTHtlnhvq6xPElfcVkFGRDtINaAnIt91QWbCnAFE420ru5nb17ImXWBzogPa1n88kW07hqX5lVdCVFhtbt4kXf");
+            var body = @"{
+            " + "\n" +
+            @"    ""address"": ""OwnerD1"",
+            " + "\n" +
+            @"    ""description"": ""OwnerD1"",
+            " + "\n" +
+            @"    ""markup"": ""{\""blocks\"":[{\""key\"":\""3k1l9\"",\""text\"":\""123123123\"",\""type\"":\""unstyled\"",\""depth\"":0,\""inlineStyleRanges\"":[],\""entityRanges\"":[],\""data\"":{}}],\""entityMap\"":{}}"",
+            " + "\n" +
+             @"    ""name"": ""OwnerD1"",
+            " + "\n" +
+             @"    ""phone"": ""123111111"",
+            " + "\n" +
+            @"    ""tags"": [""beer""]
+            " + "\n" +
+             @"}";
+
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Console.WriteLine(response.Content);
+        }
+
+        [Test]
+        public void ComparisonGetCategoriesTest()
+        {
+            RestClient client = new RestClient("http://localhost:6543/");
+            RestRequest request = new RestRequest("api/categories", Method.GET);
+
+            IRestResponse response = client.Execute(request);
+
+            CategoriesInfo locationResponse =
+                new JsonDeserializer().
+                Deserialize<CategoriesInfo>(response);
+
+            Assert.That(locationResponse.Data[5].Name, Is.EqualTo("Pizza"));
+        }
+        // END OF TESTS
     }
 }

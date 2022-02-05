@@ -8,4 +8,18 @@ namespace Team2.Net.DataEntities
         [JsonProperty("data")]
         public List<Data> Data { get; set; }
     }
+    public class ClientInfo
+    {
+        [JsonProperty("data")]
+        public List<Data> Data { get; set; }
+        
+    }
+
+    public class LoginInfo
+    {
+        [JsonProperty("data")]
+        public List<Data> Data { get; set; }
+
+    }
+    
 }

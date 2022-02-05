@@ -80,7 +80,6 @@ namespace Team2.Net
         [Test]
         public void ListOfWaitersWithOrdersTrue()  //LoginAdministrator
         {
-            var client = new RestClient("http://localhost:6543/");
             var request = new RestRequest("api/waiters?with_orders=True", Method.GET);
 
             request.AddHeader("X-Auth-Token", "nQ1n10fTQxBCRDtfu5L7cHdwbDPkmV5tRFGYg20z2DVXklnco5wMhNwvogLaI2VS7LWqjfHCRCPlwjQ12rud5D");
@@ -93,8 +92,8 @@ namespace Team2.Net
         [Test]
         public void BadAuthWithWrongeEmail()
         {
-            //var client = new RestClient("http://localhost:6543/api/login");
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/login", Method.POST);
+
             request.AddHeader("Content-Type", "text/plain");
 
             request.AddParameter("text/plain", "{\r\n\"email\": \" alexandriawright@test.com\",\r\n\"password\": \"1\"\r\n}", ParameterType.RequestBody);
@@ -108,8 +107,7 @@ namespace Team2.Net
         [Test]
         public void BadAuthForBlockedUser()
         {
-            var client = new RestClient("http://localhost:6543/api/login");
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/login", Method.POST);
 
             request.AddHeader("Content-Type", "text/plain");
             request.AddParameter("text/plain", "{\r\n\"email\": \"katherinebrennan@test.com\",\r\n\"password\": \"1111\"\r\n}", ParameterType.RequestBody);
@@ -121,17 +119,12 @@ namespace Team2.Net
 
         }
 
-
-
-       // [OneTimeSetUp]
         public string GetTokenLogin(string email, string password)
         {
-            var client = new RestClient("http://localhost:6543/api/login");
-            //client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/login", Method.POST);
 
             request.AddHeader("Content-Type", "application/json");
-            //var body = @"{" + "\n" + @" ""email"": ""petermoderator@test.com""," + "\n" + @"  ""password"": ""1""" + "\n" +  @"}";
+
             var body = @"{" + "\n" +
             @$"    ""email"": ""{email}"",
 " + "\n" +
@@ -149,8 +142,6 @@ namespace Team2.Net
 
             string tkn = locationResponse.Data[0].Token;
 
-            Console.WriteLine(tkn);
-
             return tkn;
         }
 
@@ -158,14 +149,17 @@ namespace Team2.Net
             public void AddNewUserRegistrationFromModerator() //LoginModerator
         {
             string tokenStr2;
+
             tokenStr2 = GetTokenLogin("petermoderator@test.com", "1");
 
             Console.WriteLine($"token2: {tokenStr2}");
 
-            var client = new RestClient("http://localhost:6543/api/user/1");
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/user/1", Method.POST);
+
             request.AddHeader("X-Auth-Token", tokenStr2);
+
             request.AddHeader("Content-Type", "application/json");
+
             request.AddParameter("application/json", "{\r\n \"name\": \"Elison Potter\",\r\n\"email\": \"elison@potter.com\",\r\n \"password\": \"11111111\",\r\n\"phone_number\": \"80000002\",\r\n    \"birth_date\": \"11-10-11\"\r\n}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
@@ -219,7 +213,6 @@ namespace Team2.Net
         [Test]
         public void CategoriesTest()
         {
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest("api/categories", Method.GET);
 
             IRestResponse response = client.Execute(request);
@@ -238,11 +231,7 @@ namespace Team2.Net
         {
             string tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
 
-            var client = new RestClient("http://localhost:6543/api/user/5");
-
-            client.Timeout = -1;
-
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/user/5", Method.POST);
 
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("x-auth-token", tokenOwner);
@@ -273,7 +262,6 @@ namespace Team2.Net
         [Test]
         public void ComparisonCategoriesTest()
 		{
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest("api/categories", Method.GET);
 
             IRestResponse response = client.Execute(request);
@@ -292,9 +280,7 @@ namespace Team2.Net
 
             tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
 
-            var client = new RestClient("http://localhost:6543/api/user_restaurants");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/user_restaurants", Method.POST);
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("x-auth-token", tokenOwner);
             var body = @"{
@@ -326,10 +312,7 @@ namespace Team2.Net
 
             Console.WriteLine($"token2: {tokenOwner}");
 
-            var client = new RestClient("http://localhost:6543/api/order/158");
-            client.Timeout = -1;
-
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/order/158", Method.POST);
 
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("x-auth-token", tokenOwner);
@@ -366,16 +349,6 @@ namespace Team2.Net
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
-        [Test]
-        public void Order_by_id_check()
-        {
-            RestRequest request = new RestRequest("", Method.POST);
-
-            request.AddParameter("application/json",
-               "{\"email\":\"steveadmin@test.com\",\"password\":\"1\"}",
-               ParameterType.RequestBody);
-        }
-
         // END tests;
 
         // API tests by Oleksandr 
@@ -384,9 +357,8 @@ namespace Team2.Net
         public void AddNewRestourant()
 
         {
-            var client = new RestClient("http://localhost:6543/api/user_restaurants");
             client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest("api/user_restaurants", Method.POST);
 
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("x-auth-token", "lTHtlnhvq6xPElfcVkFGRDtINaAnIt91QWbCnAFE420ru5nb17ImXWBzogPa1n88kW07hqX5lVdCVFhtbt4kXf");
@@ -415,7 +387,6 @@ namespace Team2.Net
         [Test]
         public void ComparisonGetCategoriesTest()
         {
-            RestClient client = new RestClient("http://localhost:6543/");
             RestRequest request = new RestRequest("api/categories", Method.GET);
 
             IRestResponse response = client.Execute(request);

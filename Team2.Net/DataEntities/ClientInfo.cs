@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace Team2.Net.DataEntities
 {
     public class ClientInfo
     {
+        [JsonProperty("data")]
+        public List<Data> Data { get; set; }
+
     }
 }

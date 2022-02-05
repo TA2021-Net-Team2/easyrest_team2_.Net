@@ -273,9 +273,7 @@ namespace Team2.Net
         [Test]
         public void CreatingReustaurantTest()
 		{
-            string tokenOwner;
-
-            tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
+            string tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
 
             var request = new RestRequest("api/user_restaurants", Method.POST);
             request.AddHeader("Content-Type", "application/json");
@@ -378,6 +376,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             Console.WriteLine(response.Content);
+            // ADD ASSERT
         }
 
         [Test]

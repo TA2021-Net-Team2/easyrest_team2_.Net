@@ -194,7 +194,7 @@ namespace Team2.Net
                 new JsonDeserializer().
                 Deserialize<ClientInfo>(response);
 
-            string clientid = locationResponse.Data[0].id;
+            string clientid = locationResponse.Data[0].Id;
 
             Console.WriteLine(clientid);
 

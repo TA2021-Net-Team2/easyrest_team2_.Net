@@ -16,7 +16,7 @@ namespace Team2.Net.PageObjects
         public RestaurantMenu(IWebDriver webDriver)
         {
             _webDriver = webDriver;
-            
+
         }
         public bool GetLocatorForm()
         {
@@ -24,7 +24,7 @@ namespace Team2.Net.PageObjects
         }
         public RestaurantMenu CoctailAddToCart()
         {
-            SeleniumWaiters.WaitElement(_webDriver, CoctailMenuInput); 
+            SeleniumWaiters.WaitElement(_webDriver, CoctailMenuInput);
             _webDriver.FindElement(CoctailMenuInput).SendKeys(OpenQA.Selenium.Keys.LeftShift + OpenQA.Selenium.Keys.Home);
 
             SeleniumWaiters.WaitElement(_webDriver, CoctailMenuInput);
@@ -67,7 +67,7 @@ namespace Team2.Net.PageObjects
             return _webDriver.FindElement(SuccessTextRemovingFromCart).Text;
         }
         public RestaurantMenu SuccessOrderButton()
-		{
+        {
             SeleniumWaiters.WaitElement(_webDriver, SubmitOrderButton);
             _webDriver.FindElement(SubmitOrderButton).Click();
             SeleniumWaiters.WaitElement(_webDriver, SubmitOrderButtonInWindow);
@@ -120,7 +120,37 @@ namespace Team2.Net.PageObjects
             _webDriver.FindElement(YearPicker).Click();
             SeleniumWaiters.WaitElement(_webDriver, PickYear);
             _webDriver.FindElement(PickYear).Click();
+            SeleniumWaiters.WaitElement(_webDriver, PickDay);
+            _webDriver.FindElement(PickDay).Click();
+            SeleniumWaiters.WaitElement(_webDriver, OKbutton);
+            _webDriver.FindElement(OKbutton).Click();
             return new RestaurantMenu(_webDriver);
+        }
+        public RestaurantMenu TimePickerButton()
+        {
+            Actions actions = new Actions(_webDriver);
+            SeleniumWaiters.WaitElement(_webDriver, SubmitOrderButton);
+            _webDriver.FindElement(SubmitOrderButton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, TimePickerButtonLabel);
+            _webDriver.FindElement(TimePickerButtonLabel).Click();
+            //SeleniumWaiters.WaitElement(_webDriver, PickHour);
+            SeleniumWaiters.WaitSomeInterval(1);
+            IWebElement pk = _webDriver.FindElement(RemoveItemFromCart);
+            actions.MoveToElement(pk).Perform();
+            SeleniumWaiters.WaitElement(_webDriver, PickHour);
+            _webDriver.FindElement(PickHour).Click();
+            SeleniumWaiters.WaitElement(_webDriver, OKbutton);
+            _webDriver.FindElement(OKbutton).Click();
+            SeleniumWaiters.WaitElement(_webDriver, PickMinutes);
+            _webDriver.FindElement(PickMinutes).Click();
+            SeleniumWaiters.WaitElement(_webDriver, OKbutton);
+            _webDriver.FindElement(OKbutton).Click();
+            return new RestaurantMenu(_webDriver);
+        }
+        public string FindOKButton()
+        {
+            SeleniumWaiters.WaitElement(_webDriver, SuccessTextDateSet);
+            return _webDriver.FindElement(SuccessTextDateSet).Text;
         }
     }
 }

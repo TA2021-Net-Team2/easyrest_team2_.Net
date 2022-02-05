@@ -80,9 +80,15 @@ namespace Team2.Net
         [Test]
         public void ListOfWaitersWithOrdersTrue()  //LoginAdministrator
         {
+            // ADD TOKEN ADMINISTRATOR
+
+            string tokenAdministrator = GetTokenLogin("eringonzales@test.com", "1");
+
+            Console.WriteLine($"token2: {tokenAdministrator}");
+
             var request = new RestRequest("api/waiters?with_orders=True", Method.GET);
 
-            request.AddHeader("X-Auth-Token", "nQ1n10fTQxBCRDtfu5L7cHdwbDPkmV5tRFGYg20z2DVXklnco5wMhNwvogLaI2VS7LWqjfHCRCPlwjQ12rud5D");
+            request.AddHeader("X-Auth-Token", tokenAdministrator);
             request.AddHeader("Content-Type", "application/json");
 
             IRestResponse response = client.Execute(request);
@@ -110,7 +116,7 @@ namespace Team2.Net
             var request = new RestRequest("api/login", Method.POST);
 
             request.AddHeader("Content-Type", "text/plain");
-            request.AddParameter("text/plain", "{\r\n\"email\": \"katherinebrennan@test.com\",\r\n\"password\": \"1111\"\r\n}", ParameterType.RequestBody);
+            request.AddParameter("text/plain", "{\r\n\"email\": \"angelabrewer@test.com\",\r\n\"password\": \"1111\"\r\n}", ParameterType.RequestBody);
 
             IRestResponse response = client.Execute(request);
 
@@ -126,11 +132,7 @@ namespace Team2.Net
             request.AddHeader("Content-Type", "application/json");
 
             var body = @"{" + "\n" +
-            @$"    ""email"": ""{email}"",
-" + "\n" +
-            @$"    ""password"": ""{password}""
-" + "\n" +
-            @"}";
+            @$" ""email"": ""{email}"",""password"": ""{password}""";
 
             request.AddParameter("application/json", body, ParameterType.RequestBody);
 
@@ -145,18 +147,14 @@ namespace Team2.Net
             return tkn;
         }
 
-            [Test]
-            public void AddNewUserRegistrationFromModerator() //LoginModerator
+        [Test]
+        public void AddNewUserRegistrationFromModerator() //LoginModerator
         {
-            string tokenStr2;
-
-            tokenStr2 = GetTokenLogin("petermoderator@test.com", "1");
-
-            Console.WriteLine($"token2: {tokenStr2}");
+            string tokenModerator = GetTokenLogin("petermoderator@test.com", "1");
 
             var request = new RestRequest("api/user/1", Method.POST);
 
-            request.AddHeader("X-Auth-Token", tokenStr2);
+            request.AddHeader("X-Auth-Token", tokenModerator);
 
             request.AddHeader("Content-Type", "application/json");
 
@@ -176,7 +174,6 @@ namespace Team2.Net
             Console.WriteLine(clientid);
 
             //return clientid;
-
         }
 
         /*[Test]
@@ -284,26 +281,26 @@ namespace Team2.Net
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("x-auth-token", tokenOwner);
             var body = @"{
-" + "\n" +
-            @"""address"": ""restaurantTest"",
-" + "\n" +
-            @"""description"": ""fwejifwefejwi"",
-" + "\n" +
-            @"""markup"": ""{\""blocks\"":[{\""key\"":\""41i60\"",\""text\"":\""fewfewfwe\"",\""type\"":\""unstyled\"",\""depth\"":0,\""inlineStyleRanges\"":[],\""entityRanges\"":[],\""data\"":{}}],\""entityMap\"":{}}"",
-" + "\n" +
-            @"""name"": ""restaurantTest"",
-" + "\n" +
-            @"""phone"": ""8888888888888888888"",
-" + "\n" +
-            @"""tags"": [""vegetarian""]
-" + "\n" +
+            " + "\n" +
+                        @"""address"": ""restaurantTest"",
+            " + "\n" +
+                        @"""description"": ""fwejifwefejwi"",
+            " + "\n" +
+                        @"""markup"": ""{\""blocks\"":[{\""key\"":\""41i60\"",\""text\"":\""fewfewfwe\"",\""type\"":\""unstyled\"",\""depth\"":0,\""inlineStyleRanges\"":[],\""entityRanges\"":[],\""data\"":{}}],\""entityMap\"":{}}"",
+            " + "\n" +
+                        @"""name"": ""restaurantTest"",
+            " + "\n" +
+                        @"""phone"": ""8888888888888888888"",
+            " + "\n" +
+                        @"""tags"": [""vegetarian""]
+            " + "\n" +
             @"}";
             request.AddParameter("application/json", body, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
         }
 
-        [Test]
+        /*[Test]
         public void AutorizationPOSTTest()
         {
             string tokenOwner;
@@ -327,7 +324,7 @@ namespace Team2.Net
             Console.WriteLine(response.Content);
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-        }
+        }*/
         // END
 
 
@@ -357,7 +354,6 @@ namespace Team2.Net
         public void AddNewRestourant()
 
         {
-            client.Timeout = -1;
             var request = new RestRequest("api/user_restaurants", Method.POST);
 
             request.AddHeader("Content-Type", "application/json");

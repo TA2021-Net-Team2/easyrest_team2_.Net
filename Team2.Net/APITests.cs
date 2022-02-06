@@ -22,13 +22,12 @@ namespace Team2.Net
         string tokenAdministrator = GetTokenLogin("eringonzales@test.com", "1");
         string tokenModerator = GetTokenLogin("petermoderator@test.com", "1");
         string tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
-
+        string tokenClient = GetTokenLogin("katherinebrennan@test.com", "1111");
         // Method for get token login
 
         public static string GetTokenLogin(string email, string password)
         {
             var client = new RestClient("http://localhost:6543/api/login");
-            client.Timeout = -1;
             var request = new RestRequest(Method.POST);
 
             request.AddHeader("Content-Type", "application/json");
@@ -46,11 +45,9 @@ namespace Team2.Net
                 new JsonDeserializer().
                 Deserialize<LoginInfo>(response);
 
-            string tkn = locationResponse.Data[0].Token;
+            string token = locationResponse.Data[0].Token;
 
-            Console.WriteLine(tkn);
-
-            return tkn;
+            return token;
         }
 
         // *** API tests Bohdan Oleksiichuk ***
@@ -65,7 +62,6 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             // Assert
-            // HttpStatusCode: 200 - good(OK), 404 - not found
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
@@ -163,8 +159,6 @@ namespace Team2.Net
         [Test]
         public void AddNewUserRegistrationFromModeratorTest() //LoginModerator
         {
-            string tokenModerator = GetTokenLogin("petermoderator@test.com", "1");
-
             var request = new RestRequest("api/user/1", Method.POST);
 
             request.AddHeader("X-Auth-Token", tokenModerator);
@@ -174,6 +168,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             JObject obs = JObject.Parse(response.Content);
+
             Assert.That(obs["message"].ToString(), Is.EqualTo("User successfully added"), "User successfully added");
 
             //Get user with id =55 Data.id
@@ -215,7 +210,7 @@ namespace Team2.Net
 
         //------------------------------------------------End Anna----------------------------------------------------------
 
-      //Made by Meleshchuk
+      // *** Made by Meleshchuk ***
 
         //GET
 
@@ -261,13 +256,11 @@ namespace Team2.Net
             request.AddParameter("application/json", body, ParameterType.RequestBody);
 
             IRestResponse response = client.Execute(request);
-
-            Console.WriteLine(response.Content);
         }
 
         //END by Meleshchuk
 
-        // Test by Volodymyr Swischo
+        // *** Tests by Volodymyr Swischo ***
 
         [Test]
         public void ComparisonCategoriesTest()
@@ -311,39 +304,11 @@ namespace Team2.Net
 
             IRestResponse response = client.Execute(request);
 
-            Console.WriteLine(response.Content);
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
         }
-
-        /*[Test]
-        public void AutorizationPOSTTest()
-        {
-            string tokenOwner;
-
-            tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
-
-            Console.WriteLine($"token2: {tokenOwner}");
-
-            var request = new RestRequest("api/order/158", Method.POST);
-
-            request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("x-auth-token", tokenOwner);
-            var body = @"{" + "\n" +
-            @"    ""item_id"": 1," + "\n" +
-            @"    ""q_value"": 1" + "\n" +
-            @"}";
-            request.AddParameter("application/json", body, ParameterType.RequestBody);
-
-            IRestResponse response = client.Execute(request);
-
-            Console.WriteLine(response.Content);
-
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-        }*/
         // END
 
-
-
-        // API autotests Yatsyna Denis
+        // *** API autotests Yatsyna Denis ***
         [Test]
         public void AutorizationTest()
         {
@@ -356,7 +321,7 @@ namespace Team2.Net
             // Act
             IRestResponse response = client.Execute(request);
 
-            Console.WriteLine(response.Content);
+            //Console.WriteLine(response.Content);
 
             // Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
@@ -364,38 +329,9 @@ namespace Team2.Net
 
         // END tests;
 
-        // API tests by Oleksandr 
+        // *** API tests by Oleksandr ***
 
-        [Test]
-        public void AddNewRestourantTest()
-        {
-            var request = new RestRequest("api/user_restaurants", Method.POST);
-
-            request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("x-auth-token", tokenOwner);
-
-            var body = @"{
-            " + "\n" +
-            @"    ""address"": ""OwnerD1"",
-            " + "\n" +
-            @"    ""description"": ""OwnerD1"",
-            " + "\n" +
-            @"    ""markup"": ""{\""blocks\"":[{\""key\"":\""3k1l9\"",\""text\"":\""123123123\"",\""type\"":\""unstyled\"",\""depth\"":0,\""inlineStyleRanges\"":[],\""entityRanges\"":[],\""data\"":{}}],\""entityMap\"":{}}"",
-            " + "\n" +
-             @"    ""name"": ""OwnerD1"",
-            " + "\n" +
-             @"    ""phone"": ""123111111"",
-            " + "\n" +
-            @"    ""tags"": [""beer""]
-            " + "\n" +
-             @"}";
-
-            request.AddParameter("application/json", body, ParameterType.RequestBody);
-            IRestResponse response = client.Execute(request);
-
-            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.Created));
-        }
-
+        // GET method
         [Test]
         public void ComparisonGetCategoriesTest()
         {
@@ -409,6 +345,26 @@ namespace Team2.Net
 
             Assert.That(locationResponse.Data[5].Name, Is.EqualTo("Pizza"));
         }
+
+        // POST method
+        [Test]
+        public void AddItemToOrderTest()
+        {
+            var request = new RestRequest("api/order/64", Method.POST);
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("x-auth-token", tokenClient);
+            var body = @"{" + "\n" +
+            @"    ""item_id"": 20," + "\n" +
+            @"    ""q_value"": 1" + "\n" +
+            @"}";
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+        }
         // END OF TESTS
+
     }
 }

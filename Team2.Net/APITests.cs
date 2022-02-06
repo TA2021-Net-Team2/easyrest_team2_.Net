@@ -1,3 +1,4 @@
+using NUnit.Allure.Core;
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -10,6 +11,7 @@ using Team2.Net.DataEntities;
 
 namespace Team2.Net
 {
+    [AllureNUnit]
     [TestFixture]
     public class APITests
     {

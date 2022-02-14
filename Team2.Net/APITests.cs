@@ -8,11 +8,13 @@ using RestSharp.Deserializers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Team2.Net.DataEntities;
+using NUnit.Allure.Attributes;
 
 namespace Team2.Net
 {
     [AllureNUnit]
     [TestFixture]
+    [AllureSubSuite("APITests")]
     public class APITests
     {
         // Client 
@@ -25,6 +27,9 @@ namespace Team2.Net
         string tokenModerator = GetTokenLogin("petermoderator@test.com", "1");
         string tokenOwner = GetTokenLogin("earlmorrison@test.com", "1111");
         string tokenClient = GetTokenLogin("katherinebrennan@test.com", "1111");
+        string tokenClient2 = GetTokenLogin("markrusso@test.com", "1111");
+        string tokenAdministrator2 = GetTokenLogin("seanchoi@test.com", "1");
+
         // Method for get token login
 
         public static string GetTokenLogin(string email, string password)
@@ -115,8 +120,10 @@ namespace Team2.Net
 
 //------------------------------------------------Start Anna----------------------------------------------------------
 
-        [Test]
-        public void ListOfWaitersWithOrdersTrueTest()  //LoginAdministrator
+        [Test(Description ="List of waiters")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
+        public void ListOfWaitersWithOrdersTrueTest()  
         {
             var request = new RestRequest("api/waiters?with_orders=True", Method.GET);
 
@@ -132,8 +139,7 @@ namespace Team2.Net
         public void BadAuthWithWrongeEmailTest()
         {
             var request = new RestRequest("api/login", Method.POST);
-
-            request.AddHeader("Content-Type", "text/plain");
+                       
             request.AddParameter("text/plain", "{\r\n\"email\": \" alexandriawright@test.com\",\r\n\"password\": \"1\"\r\n}", ParameterType.RequestBody);
             
             IRestResponse response = client.Execute(request);
@@ -148,7 +154,6 @@ namespace Team2.Net
         {
             var request = new RestRequest("api/login", Method.POST);
 
-            request.AddHeader("Content-Type", "text/plain");
             request.AddParameter("text/plain", "{\r\n\"email\": \"angelabrewer@test.com\",\r\n\"password\": \"1111\"\r\n}", ParameterType.RequestBody);
 
             IRestResponse response = client.Execute(request);
@@ -159,13 +164,13 @@ namespace Team2.Net
         }
 
         [Test]
-        public void AddNewUserRegistrationFromModeratorTest() //LoginModerator
+        public void AddNewUserRegistrationFromModeratorTest() 
         {
             var request = new RestRequest("api/user/1", Method.POST);
 
             request.AddHeader("X-Auth-Token", tokenModerator);
             request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", "{\r\n \"name\": \"Elison Potter\",\r\n\"email\": \"elison@potter.com\",\r\n \"password\": \"11111111\",\r\n\"phone_number\": \"80000002\",\r\n    \"birth_date\": \"11-10-11\"\r\n}", ParameterType.RequestBody);
+            request.AddParameter("application/json", "{\r\n \"name\": \"Elison Parker\",\r\n\"email\": \"elison@parker.com\",\r\n \"password\": \"22222222\",\r\n\"phone_number\": \"84705002\",\r\n    \"birth_date\": \"11-10-11\"\r\n}", ParameterType.RequestBody);
             
             IRestResponse response = client.Execute(request);
 
@@ -173,46 +178,40 @@ namespace Team2.Net
 
             Assert.That(obs["message"].ToString(), Is.EqualTo("User successfully added"), "User successfully added");
 
-            //Get user with id =55 Data.id
-            ClientInfo locationResponse =
-                new JsonDeserializer().
-                Deserialize<ClientInfo>(response);
+            //ClientInfo locationResponse =
+            //new JsonDeserializer().
+            //Deserialize<ClientInfo>(response);
 
-            string clientid = locationResponse.Data[0].Id;
+            //string clientid = locationResponse.Data[0].Id;
 
-            Console.WriteLine(clientid);
+            //PostCondishn
+            //var request2 = new RestRequest($"api/user/{clientid}", Method.DELETE);
+            //request2.AddHeader("X-Auth-Token", tokenModerator);
+            //request2.AddHeader("Content-Type", "application/json");
+            //request.AddParameter("application/json", "{\r\n \"name\": \"Elison Parker\",\r\n\"email\": \"elison@parker.com\",\r\n \"password\": \"22222222\",\r\n\"phone_number\": \"84705002\",\r\n    \"birth_date\": \"11-10-11\"\r\n}", ParameterType.RequestBody);
 
-            //return clientid;
         }
 
-        /*[Test]
-        public void DeletedUserThatWasRegistrationFromModerator() //LoginModerator
+        [Test]
+        public void AssignWaitersToOrderThatWaitingToConfirrm()
         {
-
-            string clientId;
-            clientId = AddNewUserRegistrationFromModerator();
-
-            string tokenStr2;
-            tokenStr2 = GetTokenLogin("petermoderator@test.com", "1");
-
-            Console.WriteLine($"token2: {tokenStr2}");
-
-            var client = new RestClient($"http://localhost:6543/api/user/{clientId}"); //
-
-            var request = new RestRequest(Method.DELETE);
-            request.AddHeader("X-Auth-Token", tokenStr2);
+            var request = new RestRequest("/api/order/7/status", Method.PUT);
             request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("x-auth-token", tokenAdministrator2);
 
-            request.AddParameter("application/json", "{\r\n    \"name\": \"Elison Parker\",\r\n    \"email\": \"elison@parker.com\",\r\n    \"password\": \"11111111\",\r\n    \"phone_number\": \"8000000-\",\r\n    \"birth_date\": \"10-12-12\"\r\n}", ParameterType.RequestBody); IRestResponse response = client.Execute(request);
+            request.AddParameter("application/json", "{\r\n    \"set_waiter_id\": 37,\r\n    \"new_status\": \"Assigned waiter\"\r\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            
+            RestaurantInfo locationResponse =
+                new JsonDeserializer().
+                Deserialize<RestaurantInfo>(response);
 
-            JObject obs = JObject.Parse(response.Content);
-            Assert.That(obs["message"].ToString(), Is.EqualTo("User successfully deleted"), "User successfully deleted");
-
-        }*/
-
+            // Assert
+            Assert.That(locationResponse.Data[0].Status, Is.EqualTo("Assigned waiter"));
+        }
         //------------------------------------------------End Anna----------------------------------------------------------
 
-      // *** Made by Meleshchuk ***
+        // *** Made by Meleshchuk ***
 
         //GET
 
@@ -328,6 +327,53 @@ namespace Team2.Net
             // Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
+
+        [Test]
+        public void UpdateOfORder()
+        {
+            var request = new RestRequest("api/order/151", Method.PUT);
+
+            request.AddHeader("x-auth-token", tokenClient2);
+            request.AddHeader("Content-Type", "application/json");
+
+            var body = @"{
+            " + "\n" +
+                        @"    ""item_id"": 20,
+            " + "\n" +
+                        @"    ""quantity"": 2
+            " + "\n" +
+            @"}";
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+            IRestResponse response = client.Execute(request);
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+        }
+        [Test]
+        public void DeleteofUser()
+        {
+            var request = new RestRequest("api/user/18", Method.DELETE);
+
+            request.AddHeader("X-Auth-Token", tokenModerator);
+            request.AddHeader("Content-Type", "application/json");
+            var body = @"{
+            " + "\n" +
+                        @"    ""name"" : ""Angela Brewer"",
+            " + "\n" +
+                        @"    ""email"": ""angelabrewer@test.com"",
+            " + "\n" +
+                        @"    ""password"": ""1"",
+            " + "\n" +
+                        @"    ""phone_number"": ""+380981000005"",
+            " + "\n" +
+                        @"    ""birth_date"": ""20-08-60""
+            " + "\n" +
+                        @"}";
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+        }
+
 
         // END tests;
 

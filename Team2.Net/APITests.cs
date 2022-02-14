@@ -49,7 +49,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             LoginInfo locationResponse =
-                new JsonDeserializer().
+                new RestSharp.Serialization.Json.JsonDeserializer().
                 Deserialize<LoginInfo>(response);
 
             string token = locationResponse.Data[0].Token;
@@ -111,7 +111,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             RestaurantInfo locationResponse =
-                new JsonDeserializer().
+                new RestSharp.Serialization.Json.JsonDeserializer().
                 Deserialize<RestaurantInfo>(response);
 
             // Assert
@@ -203,7 +203,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
             
             RestaurantInfo locationResponse =
-                new JsonDeserializer().
+                new RestSharp.Serialization.Json.JsonDeserializer().
                 Deserialize<RestaurantInfo>(response);
 
             // Assert
@@ -223,7 +223,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             CategoriesInfo locationResponse =
-                new JsonDeserializer().
+                new RestSharp.Serialization.Json.JsonDeserializer().
                 Deserialize<CategoriesInfo>(response);
 
             Assert.That(locationResponse.Data[1].Name, Is.EqualTo("Coctails"));
@@ -271,7 +271,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             CategoriesInfo locationResponse =
-                new JsonDeserializer().
+                new RestSharp.Serialization.Json.JsonDeserializer().
                 Deserialize<CategoriesInfo>(response);
 
             Assert.That(locationResponse.Data[6].Name, Is.EqualTo("Meat"));
@@ -388,7 +388,7 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
 
             CategoriesInfo locationResponse =
-                new JsonDeserializer().
+                new RestSharp.Serialization.Json.JsonDeserializer().
                 Deserialize<CategoriesInfo>(response);
 
             Assert.That(locationResponse.Data[5].Name, Is.EqualTo("Pizza"));

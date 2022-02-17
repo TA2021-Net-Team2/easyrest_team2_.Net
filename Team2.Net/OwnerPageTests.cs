@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Team2.Net.PageObjects;
 using NUnit.Framework;
+using NUnit.Allure.Core;
+using NUnit.Allure.Attributes;
 
 namespace Team2.Net
 {
@@ -32,7 +34,9 @@ namespace Team2.Net
                 .Login(StartLoginOwner, PasswordOwner);
         }
 
-        [Test]
+        [Test(Description = "Owner log in")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test201_OwnerLogin() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=0
         {
             Assert.True(_basePage.IsAvatarVisible());
@@ -40,7 +44,9 @@ namespace Team2.Net
 
         // Owner tests Meleshchuk
 
-        [Test]
+        [Test(Description = "Create restaurant")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test202_CreateOwnRestaurant() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1382493327
         {
             string restarauntName = "Matsuri";
@@ -54,7 +60,9 @@ namespace Team2.Net
             Assert.AreEqual("Restaurant was successfully created", _myRestaurants.GetActivityStatusRestaraunt());
         }
 
-        [Test]
+        [Test(Description = "Archive restaurant")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test203_ArchiveRestaurant() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=162147456
         {
             _myRestaurants.ArchiveRestaraunt();
@@ -62,7 +70,9 @@ namespace Team2.Net
             Assert.AreEqual("ARCHIVED", _myRestaurants.GetArchiveStatus());
         }
 
-        [Test]
+        [Test(Description = "Unarchcived restaurant")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk ")]
         public void Test204_UnarchiveRestaurant() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1130945254
         {
             _myRestaurants.UnrchiveRestaraunt();
@@ -70,7 +80,9 @@ namespace Team2.Net
             Assert.AreEqual("NOT APPROVED", _myRestaurants.GetUnarchiveStatus());
         }
 
-        [Test]
+        [Test(Description = "Owner log in")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk")]
         public void Test205_EditRestaurantInformation() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1841087841
         {
             _myRestaurants.EditRestarauntInformation();
@@ -78,7 +90,9 @@ namespace Team2.Net
             Assert.AreEqual("Restaurant was successfully updated", _myRestaurants.GetEditStatusRestaraunt());
         }
 
-        [Test]
+        [Test(Description = "Edit object to menu")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk")]
         public void Test206_EditObjectToMenu() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1785663944
         {
             _myRestaurants.EditObjectToMenu();
@@ -86,7 +100,9 @@ namespace Team2.Net
             Assert.AreEqual("There is nothing to eat", _myRestaurants.GetEditedObjectStatus());
         }
 
-        [Test]
+        [Test(Description = "Add new object to menu")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk")]
         public void Test207_AddNewObjectToMenu() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=571210351
         {
             _myRestaurants.AddNewObjectToMenu();
@@ -94,7 +110,9 @@ namespace Team2.Net
             //Assert.AreEqual();
         }
 
-        [Test]
+        [Test(Description = "Delete object")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk")]
         public void Test208_DeleteObjectToMenu() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=485463946
         {
             _myRestaurants.DeleteObjectToMenu();
@@ -102,7 +120,9 @@ namespace Team2.Net
             Assert.False(_myRestaurants.GetDeleteObjectStatus());
         }
 
-        [Test]
+        [Test(Description = "Create new list menu")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk")]
         public void Test209_CreateNewListMenu() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1441213613
         {
             _myRestaurants.CreateNewListMenu();
@@ -110,7 +130,9 @@ namespace Team2.Net
             Assert.True(_myRestaurants.GetCreateNewListMenuStatus());
         }
 
-        [Test]
+        [Test(Description = "Create new image to list menu")]
+        [AllureTag]
+        [AllureOwner("Meleshchuk")]
         public void Test210_CreateNewImageListMenu() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=653648078
         {
             _myRestaurants.CreateNewImageListMenu();
@@ -120,7 +142,9 @@ namespace Team2.Net
 
         // ****** Owner auto tests PART 2 by Bohdan Oleksiichuk ******
 
-        [Test]
+        [Test(Description = "Make menu primary")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test211_MakeMenuPrimary() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=629110417
         {
             _myRestaurants.MakeMenuPrimary();
@@ -128,7 +152,9 @@ namespace Team2.Net
             Assert.AreEqual("Make not primary", _myRestaurants.GetNotPrimaryStatus());
         }
 
-        [Test]
+        [Test(Description = "Make menu not primary")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test212_MakeMenuNotPrimary() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=708852740
         {
             _myRestaurants.MakeMenuNotPrimary();
@@ -136,7 +162,9 @@ namespace Team2.Net
             Assert.AreEqual("Make primary", _myRestaurants.GetPrimaryStatus());
         }
 
-        [Test]
+        [Test(Description = "Add waiter")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test213_AddWaiter() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=673161025
         {
             _myRestaurants.AddWaiter();
@@ -144,7 +172,9 @@ namespace Team2.Net
             Assert.AreEqual("User successfully added", _myRestaurants.GetSuccessStatusAdd());
         }
 
-        [Test]
+        [Test(Description = "Delete waiter")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test214_DeleteWaiter() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1236731630
         {
             _myRestaurants.DeleteWaiter();
@@ -152,7 +182,9 @@ namespace Team2.Net
             Assert.False(_myRestaurants.GetFirstWaiter());
         }
 
-        [Test]
+        [Test(Description = "Add administrator")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test215_AddAdministrator() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1637726513
         {
             _myRestaurants.AddAdministrator();
@@ -160,7 +192,9 @@ namespace Team2.Net
             Assert.AreEqual("User successfully added", _myRestaurants.GetSuccessStatusAdd());
         }
 
-        [Test]
+        [Test(Description = "Delete administrator")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test216_DeleteAdministrator() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=29618741
         {
             _myRestaurants.DeleteAdministrator();

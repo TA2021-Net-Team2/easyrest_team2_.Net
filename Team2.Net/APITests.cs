@@ -59,7 +59,9 @@ namespace Team2.Net
 
         // *** API tests Bohdan Oleksiichuk ***
 
-        [Test]
+        [Test(Description = "Chek restaurants")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void CheckAPIRestaurantTest()
         {
             // Arrange
@@ -72,7 +74,9 @@ namespace Team2.Net
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
-        [Test]
+        [Test(Description = "Check tipe restaurants")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void CheckTypeAPIRestaurantTest()
         {
             // arrange
@@ -86,8 +90,13 @@ namespace Team2.Net
             Assert.That(response.ContentType, Is.EqualTo("application/json"));
         }
 
-        [TestCase("2", HttpStatusCode.OK, TestName = "ExistRestaurantTest")]
-        [TestCase("123", HttpStatusCode.NotFound, TestName = "NonExistRestaurantTest")]
+        
+        [TestCase("2", HttpStatusCode.OK, TestName = "ExistRestaurantTest", Description = "Exist restaurant")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
+        [TestCase("123", HttpStatusCode.NotFound, TestName = "NonExistRestaurantTest", Description = "Non exist restaurant")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void StatusCodeTest(string restId, HttpStatusCode expectedHttpStatusCode)
         {
             // Arrange
@@ -100,7 +109,9 @@ namespace Team2.Net
             Assert.That(response.StatusCode, Is.EqualTo(expectedHttpStatusCode));
         }
 
-        [Test]
+        [Test(Description = "Correct restaurant name")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void CorrectRestaurantNameTest()
         {
             // Arrange
@@ -135,13 +146,15 @@ namespace Team2.Net
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
-        [Test]
+        [Test(Description = "Wrong email")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void BadAuthWithWrongeEmailTest()
         {
             var request = new RestRequest("api/login", Method.POST);
-                       
+
             request.AddParameter("text/plain", "{\r\n\"email\": \" alexandriawright@test.com\",\r\n\"password\": \"1\"\r\n}", ParameterType.RequestBody);
-            
+
             IRestResponse response = client.Execute(request);
 
             JObject obs = JObject.Parse(response.Content);
@@ -149,7 +162,9 @@ namespace Team2.Net
             Assert.That(obs["error"].ToString(), Is.EqualTo("Email or password is invalid"), "Email or password is invalid");
         }
 
-        [Test]
+        [Test(Description = "Bad block user")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void BadAuthForBlockedUserTest()
         {
             var request = new RestRequest("api/login", Method.POST);
@@ -163,7 +178,9 @@ namespace Team2.Net
             Assert.That(obs["error"].ToString(), Is.EqualTo("Sorry, you have been blocked"), "Sorry, you have been blocked");
         }
 
-        [Test]
+        [Test(Description = "Add new user")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void AddNewUserRegistrationFromModeratorTest() 
         {
             var request = new RestRequest("api/user/1", Method.POST);
@@ -192,7 +209,9 @@ namespace Team2.Net
 
         }
 
-        [Test]
+        [Test(Description = "")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void AssignWaitersToOrderThatWaitingToConfirrm()
         {
             var request = new RestRequest("/api/order/7/status", Method.PUT);
@@ -215,7 +234,9 @@ namespace Team2.Net
 
         //GET
 
-        [Test]
+        [Test(Description = "Categories")]
+        [AllureTag]
+        [AllureOwner("Melenchuk")]
         public void CategoriesTest()
         {
             RestRequest request = new RestRequest("api/categories", Method.GET);
@@ -230,7 +251,9 @@ namespace Team2.Net
         }
 
         //POST
-        [Test]
+        [Test(Description = "Create administrator")]
+        [AllureTag]
+        [AllureOwner("Melenchuk")]
         public void CreateAdministratorTest()
         {
             var request = new RestRequest("api/user/5", Method.POST);
@@ -263,7 +286,9 @@ namespace Team2.Net
 
         // *** Tests by Volodymyr Swischo ***
 
-        [Test]
+        [Test(Description = "Comparison categories")]
+        [AllureTag]
+        [AllureOwner("Swishcho")]
         public void ComparisonCategoriesTest()
 		{
             RestRequest request = new RestRequest("api/categories", Method.GET);
@@ -277,7 +302,9 @@ namespace Team2.Net
             Assert.That(locationResponse.Data[6].Name, Is.EqualTo("Meat"));
         }
 
-        [Test]
+        [Test(Description = "Create restourant")]
+        [AllureTag]
+        [AllureOwner("")]
         public void CreatingReustaurantTest()
 		{
             var request = new RestRequest("api/user_restaurants", Method.POST);
@@ -310,7 +337,9 @@ namespace Team2.Net
         // END
 
         // *** API autotests Yatsyna Denis ***
-        [Test]
+        [Test(Description = "Autorization")]
+        [AllureTag]
+        [AllureOwner("Yatsyna")]
         public void AutorizationTest()
         {
             // Arrange
@@ -328,7 +357,9 @@ namespace Team2.Net
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
 
-        [Test]
+        [Test(Description = "Update order")]
+        [AllureTag]
+        [AllureOwner("Yatsyna")]
         public void UpdateOfORder()
         {
             var request = new RestRequest("api/order/151", Method.PUT);
@@ -348,7 +379,9 @@ namespace Team2.Net
             IRestResponse response = client.Execute(request);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
-        [Test]
+        [Test(Description = "Delete user")]
+        [AllureTag]
+        [AllureOwner("Yatsyna")]
         public void DeleteofUser()
         {
             var request = new RestRequest("api/user/18", Method.DELETE);
@@ -380,7 +413,9 @@ namespace Team2.Net
         // *** API tests by Oleksandr ***
 
         // GET method
-        [Test]
+        [Test(Description = "Comparison get categories")]
+        [AllureTag]
+        [AllureOwner("Okhotynskyy")]
         public void ComparisonGetCategoriesTest()
         {
             RestRequest request = new RestRequest("api/categories", Method.GET);
@@ -395,7 +430,9 @@ namespace Team2.Net
         }
 
         // POST method
-        [Test]
+        [Test(Description = "Add item")]
+        [AllureTag]
+        [AllureOwner("Okhotynskyy")]
         public void AddItemToOrderTest()
         {
             var request = new RestRequest("api/order/64", Method.POST);

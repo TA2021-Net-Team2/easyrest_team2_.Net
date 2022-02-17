@@ -42,7 +42,9 @@ namespace Team2.Net
             Assert.True(_basePage.IsAvatarVisible());
         }
 
-        
+        [Test(Description = "Close order in all panel")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void Test602_CloseOrderInAllPannel() // https://docs.google.com/spreadsheets/d/1qwtfhe3EwPgK_oSZD8-hsIk7unHBBR_vsAPIzqL431c/edit#gid=393328420
         {
             _waiterPanel.CloseOrderInAll();

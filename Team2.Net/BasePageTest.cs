@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using System.Threading;
 using Team2.Net;
 using Team2.Net.PageObjects;
+using NUnit.Allure.Core;
+using NUnit.Allure.Attributes;
 
 namespace Team2.Net
 {
@@ -24,7 +26,9 @@ namespace Team2.Net
             restaurantMenu = new RestaurantMenu(_webDriver);
         }
 
-        [Test]
+        [Test(Description = "Registration")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test409_Registration() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=212817552
         {
             _basePage
@@ -34,7 +38,9 @@ namespace Team2.Net
             Assert.AreEqual("Sign In", autorizationPage.GetSignInPage());
         }
 
-        [Test]
+        [Test(Description = "Create order ")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test410_CreateOrderUnauthorizedUser() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=705429520
         {
             _basePage.OpenRestaurantList();
@@ -44,7 +50,9 @@ namespace Team2.Net
             Assert.AreEqual("Sign In", autorizationPage.GetSignInPage());
         }
 
-        [Test]
+        [Test(Description = "Log in from googleaccount")]
+        [AllureTag]
+        [AllureOwner("Oleksiichuk")]
         public void Test411_LogInFromGoogleAccount() // https://docs.google.com/spreadsheets/d/1BuWY7FLzfvljgloPzJyCw3y7gBMUh5banMSJ25ol8IQ/edit#gid=1660078923
         {
             _basePage.SignIn();

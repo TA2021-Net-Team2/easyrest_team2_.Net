@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using System.Threading;
 using Team2.Net;
 using Team2.Net.PageObjects;
+using NUnit.Allure.Core;
+using NUnit.Allure.Attributes;
 
 namespace Team2.Net
 {
@@ -32,13 +34,17 @@ namespace Team2.Net
                 .Login(StartLoginWaiter, PasswordWaiter);
         }
 
-        [Test]
+        [Test(Description = "Waiter log in")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void Test601_WaiterLogin() // https://docs.google.com/spreadsheets/d/1qwtfhe3EwPgK_oSZD8-hsIk7unHBBR_vsAPIzqL431c/edit#gid=736636292
         {
             Assert.True(_basePage.IsAvatarVisible());
         }
 
-        [Test]
+        [Test(Description = "Close order in all panel")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void Test602_CloseOrderInAllPannel() // https://docs.google.com/spreadsheets/d/1qwtfhe3EwPgK_oSZD8-hsIk7unHBBR_vsAPIzqL431c/edit#gid=393328420
         {
             _waiterPanel.CloseOrderInAll();
@@ -46,14 +52,18 @@ namespace Team2.Net
             Assert.AreEqual("success", _waiterPanel.FindSuccessButton());
         }
 
-        [Test]
+        [Test(Description = "Start order")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void Test603_StartOrderInAllPannel() // https://docs.google.com/spreadsheets/d/1qwtfhe3EwPgK_oSZD8-hsIk7unHBBR_vsAPIzqL431c/edit#gid=1738436645
         {
             _waiterPanel.StartOrderInAll();
 
             Assert.AreEqual("success", _waiterPanel.FindSuccessButton());
         }
-        [Test]
+        [Test(Description = "Start waiter in waiter panel")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void Test604_StartOrderInWaiterPanel() // https://docs.google.com/spreadsheets/d/1qwtfhe3EwPgK_oSZD8-hsIk7unHBBR_vsAPIzqL431c/edit#gid=732004908
         {
             _waiterPanel.StartOrder();
@@ -61,7 +71,9 @@ namespace Team2.Net
             Assert.AreEqual("success", _waiterPanel.FindSuccessButton());
         }
 
-        [Test]
+        [Test(Description = "Close order in progress")]
+        [AllureTag]
+        [AllureOwner("Zaiets")]
         public void Test605_CloseOrderInProgress() // https://docs.google.com/spreadsheets/d/1qwtfhe3EwPgK_oSZD8-hsIk7unHBBR_vsAPIzqL431c/edit#gid=277716498
         {
             _waiterPanel.CloseOrder();

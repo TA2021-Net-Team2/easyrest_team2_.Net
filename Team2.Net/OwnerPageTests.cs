@@ -36,7 +36,7 @@ namespace Team2.Net
 
         [Test(Description = "Owner log in")]
         [AllureTag]
-        [AllureOwner("Oleksiichuk")]
+        [AllureOwner("Meleshchuk")]
         public void Test201_OwnerLogin() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=0
         {
             Assert.True(_basePage.IsAvatarVisible());
@@ -46,7 +46,7 @@ namespace Team2.Net
 
         [Test(Description = "Create restaurant")]
         [AllureTag]
-        [AllureOwner("Oleksiichuk")]
+        [AllureOwner("Meleshchuk")]
         public void Test202_CreateOwnRestaurant() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1382493327
         {
             string restarauntName = "Matsuri";
@@ -62,7 +62,7 @@ namespace Team2.Net
 
         [Test(Description = "Archive restaurant")]
         [AllureTag]
-        [AllureOwner("Oleksiichuk")]
+        [AllureOwner("Meleshchuk")]
         public void Test203_ArchiveRestaurant() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=162147456
         {
             _myRestaurants.ArchiveRestaraunt();
@@ -72,7 +72,7 @@ namespace Team2.Net
 
         [Test(Description = "Unarchcived restaurant")]
         [AllureTag]
-        [AllureOwner("Meleshchuk ")]
+        [AllureOwner("Meleshchuk")]
         public void Test204_UnarchiveRestaurant() // https://docs.google.com/spreadsheets/d/1JE1W3-m7x_F-APVwvsBPQc-ho193H_6-FC9IwNNWkwY/edit#gid=1130945254
         {
             _myRestaurants.UnrchiveRestaraunt();
